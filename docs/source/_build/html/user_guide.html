@@ -1,0 +1,745 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fragalysis User Guide &mdash; Fragalysis  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=85a095ab" />
+
+  
+    <link rel="shortcut icon" href="_static/Fragalysis_Icon Dark Cropped.png"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Jupyter Notebooks in Fragalysis" href="notebooks.html" />
+    <link rel="prev" title="Fragalysis" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Fragalysis
+              <img src="_static/Fragalysis_Wordmark Light.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Fragalysis User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-the-homepage">Navigating the homepage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-fragalysis-viewer-interface">The Fragalysis “viewer” interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controlling-the-3d-viewer">Controlling the 3D viewer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometric-filtering">Geometric filtering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#browsing-experimental-data-lhs">Browsing experimental data (LHS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tag-details">Tag Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hit-navigator">Hit navigator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lhs-poses-and-observations">LHS “poses” and “observations”</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#display-data-in-the-3d-viewer">Display data in the 3D viewer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-decides-which-hits-are-shown">What decides which hits are shown?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#searching-for-specific-hits">Searching for specific hits</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#snapshots">Snapshots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-direct-urls-to-specific-views">Creating direct URLs to specific views</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#specifying-the-target-and-proposal">Specifying the target and proposal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-direct-url-syntax">Using the <code class="docutils literal notranslate"><span class="pre">direct</span></code> URL syntax</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#curating-experimental-data-lhs">Curating experimental data (LHS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#working-with-xca-assigned-sites-tags">Working with XCA-assigned sites/tags</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#editing-tags">Editing tags</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#changing-site-assignments">Changing site assignments</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-curator-tags">Adding “Curator” tags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indicating-merging-hypotheses">Indicating merging hypotheses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indicating-experimental-model-quality">Indicating experimental / model quality</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#uploading-assay-measurements-or-computed-scores-lhs">Uploading assay measurements or computed scores (LHS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-assay-data-csv">Creating the assay data CSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uploading">Uploading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-data-type-of-existing-data-column">Modifying data type of existing data column</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#browsing-virtual-compound-sets-rhs">Browsing virtual compound sets (RHS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview-of-the-rhs-interface">Overview of the RHS interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inspirations">Inspirations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sorting-and-filtering">Sorting and filtering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#curating-virtual-compound-sets-rhs">Curating virtual compound sets (RHS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#colours-painting">Colours / painting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arrows">Arrows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exporting-curations">Exporting curations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#uploading-virtual-compound-sets-rhs">Uploading virtual compound sets (RHS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#supported-data-format">Supported data format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#header-molecule">Header molecule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ligands">Ligands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ligands-and-proteins-sdf-zip-of-pdbs">Ligands and proteins (SDF + ZIP of PDBs)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-header">Example Header</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Jupyter Notebooks in Fragalysis</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Using the Fragalysis REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="py_api.html">Using the Fragalysis Python API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Fragalysis</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Fragalysis User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/user_guide.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fragalysis-user-guide">
+<h1>Fragalysis User Guide<a class="headerlink" href="#fragalysis-user-guide" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Fragalysis is a web-based platform for the visualisation, comparison, and analysis of fragment-bound protein crystal structures, assay measurements, and follow-up virtual ligand screens. It can effectively be divided into:</p>
+<p><strong>Experimental</strong> fragment screening data processed via <a class="reference external" href="https://xchem-align.readthedocs.io">XChem Align</a> and uploaded to Fragalysis, curated and downloaded via the <strong>“left-hand side” (LHS)</strong> of Fragalysis.</p>
+<p><strong>Computed</strong> follow-up designs from virtual compound sets uploaded to Fragalysis, curated and downloaded via the <strong>“right-hand side” (RHS)</strong> of Fragalysis.</p>
+<hr class="docutils" />
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<p>Fragalysis can be used to explore data in a number of ways:</p>
+<p><strong>Experimental Structures (LHS)</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#browsing-experimental-data">Browsing Experimental data</a></p></li>
+<li><p><a class="reference internal" href="#curating-experimental-data">Curating Experimental data</a></p></li>
+<li><p><a class="reference internal" href="#uploading-assays">Uploading assay measurements or computed scores</a></p></li>
+</ul>
+<p><strong>Computed Structures (RHS)</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#browsing-virtual">Browsing virtual compound sets</a></p></li>
+<li><p><a class="reference internal" href="#curating-virtual">Curating virtual compound sets</a></p></li>
+<li><p><a class="reference internal" href="#uploading-virtual">Uploading virtual compound sets</a></p></li>
+</ul>
+<p><strong>Jupyter Notebooks</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks.html"><span class="std std-doc">Jupyter Notebooks in Fragalysis</span></a></p></li>
+</ul>
+<p><strong>Programming Interface (API)</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html"><span class="std std-doc">Using the Fragalysis REST API</span></a></p></li>
+<li><p><a class="reference internal" href="py_api.html"><span class="std std-doc">Using the Fragalysis Python API</span></a></p></li>
+</ul>
+<hr class="docutils" />
+<section id="navigating-the-homepage">
+<h3>Navigating the homepage<a class="headerlink" href="#navigating-the-homepage" title="Link to this heading"></a></h3>
+<p>Navigating to the Fragalysis homepage for the first time you will be prompted to log in with your FedID. This will allow you to view the “private targets” associated with your Diamond user account, alongside public and legacy targets:</p>
+<a class="reference internal image-reference" href="_images/homepage_login.png"><img alt="Fragalysis login page" src="_images/homepage_login.png" style="width: 1000px;" />
+</a>
+</section>
+<section id="the-fragalysis-viewer-interface">
+<h3>The Fragalysis “viewer” interface<a class="headerlink" href="#the-fragalysis-viewer-interface" title="Link to this heading"></a></h3>
+<p>The Fragalysis viewer has been customised for fragment screening workflows, is fully interactive and runs directly in your browser. When opening a target, you will be presented with an interface that allows you to interact with and curate data:</p>
+<img src="_static/media/fragalysis.png" alt="lhs" width="1000px">
+<ul class="simple">
+<li><p><strong>Share/snapshot</strong> this allows you to create and share a permanent link to your exact Fragalysis state</p></li>
+<li><p><strong>Tags</strong> This is how you can control which hits are visible by sites and other categories</p></li>
+<li><p><strong>LHS / Hits</strong> Here you can navigate all the hits and add visualisations to them (The Tags panel also belongs to the LHS)</p></li>
+<li><p>The visualisation buttons are shared also with virtual hits (RHS) and work as follows:</p>
+<ul>
+<li><p><strong>A</strong>ll : show ligand in (CPK), protein side chains (lines), and interactions.</p></li>
+<li><p><strong>L</strong>igand: Ligand (CPK)</p></li>
+<li><p><strong>P</strong>rotein: Protein side chains (lines)</p></li>
+<li><p>Intera<strong>c</strong>tions: Interactions</p></li>
+<li><p><strong>S</strong>urface: Electrostatic surface of the protein</p></li>
+<li><p>Electron <strong>D</strong>ensity: Experimental electron density</p></li>
+<li><p><strong>V</strong>ectors: Possible vectors for elaboration</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="controlling-the-3d-viewer">
+<h3>Controlling the 3D viewer<a class="headerlink" href="#controlling-the-3d-viewer" title="Link to this heading"></a></h3>
+<p>Fragalysis uses NGL viewer under the hood to visualise 3D models, inspect binding sites, and compare multiple structures at once. It can be easily controlled with mouse and keyboard inputs:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key / Mouse action</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>scroll</p></td>
+<td><p>Zoom scene</p></td>
+</tr>
+<tr class="row-odd"><td><p>scroll + Ctrl</p></td>
+<td><p>Move near clipping plane</p></td>
+</tr>
+<tr class="row-even"><td><p>scroll + Shift</p></td>
+<td><p>Move near clipping plane and far fog</p></td>
+</tr>
+<tr class="row-odd"><td><p>scroll + Alt</p></td>
+<td><p>Change isolevel of isosurfaces</p></td>
+</tr>
+<tr class="row-even"><td><p>drag right</p></td>
+<td><p>Pan / translate scene</p></td>
+</tr>
+<tr class="row-odd"><td><p>drag middle</p></td>
+<td><p>Zoom scene</p></td>
+</tr>
+<tr class="row-even"><td><p>drag left</p></td>
+<td><p>Rotate scene</p></td>
+</tr>
+<tr class="row-odd"><td><p>drag + Shift + right</p></td>
+<td><p>Zoom scene</p></td>
+</tr>
+<tr class="row-even"><td><p>drag left + right</p></td>
+<td><p>Zoom scene</p></td>
+</tr>
+<tr class="row-odd"><td><p>drag + Ctrl + right</p></td>
+<td><p>Pan / translate hovered component</p></td>
+</tr>
+<tr class="row-even"><td><p>drag + Ctrl + left</p></td>
+<td><p>Rotate hovered component</p></td>
+</tr>
+<tr class="row-odd"><td><p>click pick (middle)</p></td>
+<td><p>Auto view picked component element</p></td>
+</tr>
+<tr class="row-even"><td><p>hover pick</p></td>
+<td><p>Show tooltip for hovered component element</p></td>
+</tr>
+<tr class="row-odd"><td><p>i</p></td>
+<td><p>Toggle stage spinning</p></td>
+</tr>
+<tr class="row-even"><td><p>k</p></td>
+<td><p>Toggle stage rocking</p></td>
+</tr>
+<tr class="row-odd"><td><p>p</p></td>
+<td><p>Pause all stage animations</p></td>
+</tr>
+<tr class="row-even"><td><p>r</p></td>
+<td><p>Reset stage auto view</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="geometric-filtering">
+<h3>Geometric filtering<a class="headerlink" href="#geometric-filtering" title="Link to this heading"></a></h3>
+<p>Geometric filtering allows you to limit hits based on their position in 3D space. When you click any structure in the NGL Viewer, a green semi-transparent sphere will appear. After clicking <strong>Apply</strong> in the <strong>Radius selection</strong> dialog, only hits that intersect with the sphere will be shown in the hit navigator.</p>
+<img src="_static/media/FilteringSphere.png" alt="lhs" width="600px">
+<p>This feature is <strong>ON</strong> by default and can be toggled in the Advanced Search dialog. If you turn it off, any existing geometric filtering is cleared and no spatial filtering will be applied.</p>
+<img src="_static/media/AdvancedSearchDialog.png" alt="lhs" width="600px">
+<hr class="docutils" />
+</section>
+</section>
+<section id="browsing-experimental-data-lhs">
+<span id="browsing-experimental-data"></span><h2>Browsing experimental data (LHS)<a class="headerlink" href="#browsing-experimental-data-lhs" title="Link to this heading"></a></h2>
+<p>The left-hand-side (LHS) user interface of Fragalysis allows you to select experimental data for display, download, and computation.</p>
+<p>There are three panels Tag Details, Hit Navigator, and Snapshot:</p>
+<section id="tag-details">
+<h3>Tag Details<a class="headerlink" href="#tag-details" title="Link to this heading"></a></h3>
+<p>Tags are user-defined labels used to organise, filter, and annotate structures and fragments within Fragalysis. They provide a flexible way to group related data and share interpretation without modifying the underlying experimental data. This section details how tags can be used to filter experimental data. To add and edit tags see the <a class="reference internal" href="#curating-experimental-data">curating experimental (LHS) data</a> page.</p>
+<p>All tags assigned to left-hand side data can be managed in this panel:</p>
+<img src="_static/media/lhs_tag_panel.png" alt="lhs" width="600px">
+<p>Select tags to show datasets assigned to that tag in the <a class="reference internal" href="#hit-navigator">Hit navigator</a>. The union / intersection toggle at the top of the page can be used to determine the behaviour when multiple tags are selected:</p>
+<ul class="simple">
+<li><p><strong>Union</strong>: Display datasets that are tagged with <strong>at least one</strong> of the selected tags</p></li>
+<li><p><strong>Intersection</strong>: Display datasets that are tagged with <strong>all</strong> of the selected tags</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Control</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>SHOW UNTAGGED HITS</strong></p></td>
+<td><p>Displays only datasets that do not have any tags assigned. Useful for identifying new or unreviewed fragment hits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SHOW ALL HITS</strong></p></td>
+<td><p>Displays all datasets, ignoring the current tag selection. Overrides any active tag filters.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>SELECT ALL TAGS</strong></p></td>
+<td><p>Selects all available tags in the tag list. Does not automatically select hits in the hit navigator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SELECT HITS</strong> (per tag)</p></td>
+<td><p>Activates selection checkboxes for all datasets associated with the chosen tag. Useful for bulk operations on tagged datasets.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hit-navigator">
+<span id="id1"></span><h3>Hit navigator<a class="headerlink" href="#hit-navigator" title="Link to this heading"></a></h3>
+<p>The Hit Navigator is the primary panel in Fragalysis for browsing, filtering, and selecting fragment screening hits associated with a target. It controls which datasets are loaded into the structure viewer and provides tools for organising hits using tags and metadata.</p>
+<img src="_static/media/lhs_hit_panel.png" alt="lhs" width="600px">
+<section id="lhs-poses-and-observations">
+<h4>LHS “poses” and “observations”<a class="headerlink" href="#lhs-poses-and-observations" title="Link to this heading"></a></h4>
+<p>Ligands from experimental datasets are known as <strong>observations</strong> are grouped into <strong>poses</strong>. <strong>Poses</strong> are named after and take their behaviour from their <strong>main observation</strong>.</p>
+<p><strong>Poses</strong> and <strong>observations</strong> have the following interface:</p>
+<img src="_static/media/lhs_pose.png" alt="lhs" width="600px">
+</section>
+<section id="display-data-in-the-3d-viewer">
+<h4>Display data in the 3D viewer<a class="headerlink" href="#display-data-in-the-3d-viewer" title="Link to this heading"></a></h4>
+<img src="_static/media/lhs_3d_buttons.png" alt="lhs" width="200px">
+<p>The <strong>[A][L][P][C][S][D][V]</strong> buttons can be used to activate various representations of the observation in the 3D NGL viewer:</p>
+<ul class="simple">
+<li><p><strong>[A]</strong>: shortcut to activate <strong>[L][P][C]</strong></p></li>
+<li><p><strong>[L]</strong>: <strong>L</strong>igand (ball and stick)</p></li>
+<li><p><strong>[P]</strong>: <strong>P</strong>rotein sidechains (lines)</p></li>
+<li><p><strong>[C]</strong>: Intera<strong>C</strong>tions</p></li>
+<li><p><strong>[S]</strong>: <strong>S</strong>urface (coloured by electrostatics)</p></li>
+<li><p><strong>[D]</strong>: Electron <strong>D</strong>ensity maps</p></li>
+<li><p><strong>[V]</strong>: Expansion <strong>V</strong>ectors</p></li>
+</ul>
+</section>
+<section id="what-decides-which-hits-are-shown">
+<h4>What decides which hits are shown?<a class="headerlink" href="#what-decides-which-hits-are-shown" title="Link to this heading"></a></h4>
+<p>The hit navigator follows these key rules to determine which datasets are shown:</p>
+<ol class="arabic simple">
+<li><p>All datasets displayed in the 3d viewer are shown</p></li>
+<li><p>Datasets from active tags are shown</p></li>
+<li><p>If a search string is present, only observations matching that string are shown</p></li>
+</ol>
+</section>
+<section id="searching-for-specific-hits">
+<h4>Searching for specific hits<a class="headerlink" href="#searching-for-specific-hits" title="Link to this heading"></a></h4>
+<p>The search bar can be used to search for specific hits:</p>
+<img src="_static/media/lhs_search.png" alt="lhs" width="300px">
+<p>Your search query will be matched against the following fields:</p>
+<ul class="simple">
+<li><p>Observation shortcode</p></li>
+<li><p>Compound aliases</p></li>
+<li><p>Compound ID</p></li>
+</ul>
+<p>This can be customised by clicking on the magnifying glass icon.</p>
+<p>See also <a class="reference internal" href="#creating-urls">Creating direct URLs to specific views</a></p>
+</section>
+</section>
+<section id="snapshots">
+<h3>Snapshots<a class="headerlink" href="#snapshots" title="Link to this heading"></a></h3>
+<p>Snapshots are saved views of the current analysis state, allowing you to quickly return to a specific set of selected hits and visualisation settings, and making it easy to share or revisit a particular analysis.</p>
+<a class="reference internal image-reference" href="_images/snapshot.png"><img alt="snapshot window" src="_images/snapshot.png" style="width: 600px;" />
+</a>
+</section>
+<section id="creating-direct-urls-to-specific-views">
+<span id="creating-urls"></span><h3>Creating direct URLs to specific views<a class="headerlink" href="#creating-direct-urls-to-specific-views" title="Link to this heading"></a></h3>
+<p>To link to specific datasets within a target, the following syntax is supported:</p>
+<section id="specifying-the-target-and-proposal">
+<h4>Specifying the target and proposal<a class="headerlink" href="#specifying-the-target-and-proposal" title="Link to this heading"></a></h4>
+<p>The following URL takes you to the target with:</p>
+<ul class="simple">
+<li><p>name: <code class="docutils literal notranslate"><span class="pre">A71EV2A</span></code></p></li>
+<li><p>target access string (tas): <code class="docutils literal notranslate"><span class="pre">lb32627-66</span></code>:</p></li>
+</ul>
+<p><a class="reference external" href="https://fragalysis.diamond.ac.uk/viewer/react/preview/target/A71EV2A/tas/lb32627-66">https://fragalysis.diamond.ac.uk/viewer/react/preview/target/A71EV2A/tas/lb32627-66</a></p>
+</section>
+<section id="using-the-direct-url-syntax">
+<h4>Using the <code class="docutils literal notranslate"><span class="pre">direct</span></code> URL syntax<a class="headerlink" href="#using-the-direct-url-syntax" title="Link to this heading"></a></h4>
+<p>You can also create URLs that display specific datasets. To use this functionality you have to use this base URL including the <code class="docutils literal notranslate"><span class="pre">direct</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">fragalysis</span><span class="o">.</span><span class="n">diamond</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">viewer</span><span class="o">/</span><span class="n">react</span><span class="o">/</span><span class="n">preview</span><span class="o">/</span><span class="n">direct</span><span class="o">/</span>
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<p><em><strong>e.g. showing observations with ligands where compound alias contains substring <code class="docutils literal notranslate"><span class="pre">ASAP</span></code>:</strong></em></p>
+<p><a class="reference external" href="https://fragalysis.diamond.ac.uk/viewer/react/preview/direct/target/A71EV2A/tas/lb32627-66/compound/ASAP/L">https://fragalysis.diamond.ac.uk/viewer/react/preview/direct/target/A71EV2A/tas/lb32627-66/compound/ASAP/L</a></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">target/A71EV2A</span></code>: specifies the target name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tas/lb32627-66</span></code>: specifies the target access string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compound/ASAP/L</span></code>: shows the ligand (<code class="docutils literal notranslate"><span class="pre">L</span></code>) representation for all <code class="docutils literal notranslate"><span class="pre">compound</span></code> aliases containing <code class="docutils literal notranslate"><span class="pre">ASAP</span></code></p></li>
+</ul>
+<p><em><strong>e.g. showing observations with ligands where compound alias is exactly <code class="docutils literal notranslate"><span class="pre">ASAP-0016733-001</span></code>:</strong></em></p>
+<p><a class="reference external" href="https://fragalysis.diamond.ac.uk/viewer/react/preview/direct/target/A71EV2A/tas/lb32627-66/compound/ASAP-0016733-001/L/exact">https://fragalysis.diamond.ac.uk/viewer/react/preview/direct/target/A71EV2A/tas/lb32627-66/compound/ASAP-0016733-001/L/exact</a></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">target/A71EV2A</span></code>: specifies the target name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tas/lb32627-66</span></code>: specifies the target access string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compound/ASAP-0016733-001/L/exact</span></code>: shows the ligand (<code class="docutils literal notranslate"><span class="pre">L</span></code>) representation for exact <code class="docutils literal notranslate"><span class="pre">compound</span></code> aliases match <code class="docutils literal notranslate"><span class="pre">ASAP-0016733-001</span></code></p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+<section id="curating-experimental-data-lhs">
+<span id="curating-experimental-data"></span><h2>Curating experimental data (LHS)<a class="headerlink" href="#curating-experimental-data-lhs" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://xchem-align.readthedocs.io">XChemAlign</a> transforms crystallographic data into a biological reference frame. This involves matching ligand neighbourhoods across crystalforms, assemblies, and chains onto a appropriate reference structures. This process generates various <em>sites</em> which make their way into Fragalysis via tags. All tag information is also included in the <code class="docutils literal notranslate"><span class="pre">metadata.csv</span></code> in any Fragalysis download.</p>
+<img src="_static/media/xca_transformation_figure.png" alt="xca_transformation_figure" width="800px">
+<section id="working-with-xca-assigned-sites-tags">
+<h3>Working with XCA-assigned sites/tags<a class="headerlink" href="#working-with-xca-assigned-sites-tags" title="Link to this heading"></a></h3>
+<p>The main XCA-assigned site is called a <em>Canonical Site</em> and effectively clusters ligands. When you first upload a target to Fragalysis all CanonSite tags will have an auto-generated name and colour. See CanonSite 2: <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">-</span> <span class="pre">c0692/D/304/1</span></code> in the screenshot below. The yellow <code class="docutils literal notranslate"><span class="pre">2</span></code> in the hit navigator corresponds to this canonical site.</p>
+<img src="_static/media/lhs_canonsite_highlight.png" alt="lhs_canonsite_highlight" width="600px">
+<section id="editing-tags">
+<h4>Editing tags<a class="headerlink" href="#editing-tags" title="Link to this heading"></a></h4>
+<p>The colour, name, and visibility of the site can be changed in the <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">Tags</span></code> dialog.</p>
+<img src="_static/media/edit_tags.png" alt="edit_tags" width="800px">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>N.B. you must be logged in and on the UAS proposal to make any changes to a Fragalysis target.</p>
+</div>
+</section>
+<section id="changing-site-assignments">
+<h4>Changing site assignments<a class="headerlink" href="#changing-site-assignments" title="Link to this heading"></a></h4>
+<p>If you disagree with the clustering from XCA you can change the assigned sites via the observation dialog (click on the observation count to open):</p>
+<img src="_static/media/change_xca_site.png" alt="change_xca_site" width="800px">
+</section>
+</section>
+<section id="adding-curator-tags">
+<h3>Adding “Curator” tags<a class="headerlink" href="#adding-curator-tags" title="Link to this heading"></a></h3>
+<p>For additional annotation of structures <em>Curator Tags</em> can be created via the <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">Tags</span></code> window. Select <code class="docutils literal notranslate"><span class="pre">Other</span> <span class="pre">--</span> <span class="pre">new</span> <span class="pre">tag</span> <span class="pre">--</span></code> from the dropdown. These tags can be added to observations in the tag navigator:</p>
+<img src="_static/media/add_tag.png" alt="add_tag" width="800px">
+</section>
+<section id="indicating-merging-hypotheses">
+<h3>Indicating merging hypotheses<a class="headerlink" href="#indicating-merging-hypotheses" title="Link to this heading"></a></h3>
+<p>For <em>Fast Forward Fragments</em> it is required to create one <em>Curator Tag</em> for each group of fragments that you wish to explore merging. These can often just be all hits in the pockets of interest.</p>
+</section>
+<section id="indicating-experimental-model-quality">
+<h3>Indicating experimental / model quality<a class="headerlink" href="#indicating-experimental-model-quality" title="Link to this heading"></a></h3>
+<p>The experimental / model quality can be indicated using the traffic light system:</p>
+<img src="_static/media/traffic_lights.png" alt="traffic_lights" width="600px">
+<p>Each observation will have a <code class="docutils literal notranslate"><span class="pre">Main</span> <span class="pre">Status</span></code>, it should be decided in your project who has the final say on this, typically there is one main data owner / structural biologist. All other members are recommended to only add <code class="docutils literal notranslate"><span class="pre">Peer</span> <span class="pre">Reviews</span></code>. These not only have a status, but also allow for a comment.</p>
+<hr class="docutils" />
+</section>
+</section>
+<section id="uploading-assay-measurements-or-computed-scores-lhs">
+<span id="uploading-assays"></span><h2>Uploading assay measurements or computed scores (LHS)<a class="headerlink" href="#uploading-assay-measurements-or-computed-scores-lhs" title="Link to this heading"></a></h2>
+<p>Fragalysis supports annotation of experimental data with text or numeric scores that are linked either to compound codes or observation short codes.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not upload any assay data to a public target that is confidential! Measurements against compounds that do not (yet) have structures will still be accessible to authorised API users.</p>
+</div>
+<section id="creating-the-assay-data-csv">
+<h3>Creating the assay data CSV<a class="headerlink" href="#creating-the-assay-data-csv" title="Link to this heading"></a></h3>
+<p>Create a CSV with:</p>
+<ul class="simple">
+<li><p>one identifier column, containing either compound codes or observation short codes</p></li>
+<li><p>as many text/numeric columns as you want</p></li>
+<li><p>The data type of columns can optionally be specified by an additional row containing <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, or <code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+</ul>
+<img src="_static/media/assay_data_csv.png" alt="assay_data_csv" width="300px">
+<p>Please note that CDD data can be exported as a CSV and often uploading with minimal manual modification.</p>
+</section>
+<section id="uploading">
+<h3>Uploading<a class="headerlink" href="#uploading" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Log in and open your target of interest</p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">Assay</span> <span class="pre">data</span> <span class="pre">upload</span></code> from the menu</p></li>
+<li><p>Complete the form:</p></li>
+</ul>
+<img src="_static/media/assay_data_form.png" alt="assay_data_form" width="300px">
+</section>
+<section id="modifying-data-type-of-existing-data-column">
+<h3>Modifying data type of existing data column<a class="headerlink" href="#modifying-data-type-of-existing-data-column" title="Link to this heading"></a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">/api/activity_data_curation/</span></code> endpoint to change data types of previously uploaded scores</p>
+<hr class="docutils" />
+</section>
+</section>
+<section id="browsing-virtual-compound-sets-rhs">
+<span id="browsing-virtual"></span><h2>Browsing virtual compound sets (RHS)<a class="headerlink" href="#browsing-virtual-compound-sets-rhs" title="Link to this heading"></a></h2>
+<section id="overview-of-the-rhs-interface">
+<h3>Overview of the RHS interface<a class="headerlink" href="#overview-of-the-rhs-interface" title="Link to this heading"></a></h3>
+<p>The right hand side (RHS) is where follow-up designs and their virtual hits are navigated. Follow-up designs are grouped into <strong>compound sets</strong>, corresponding to each SDF that was uploaded (See <a class="reference internal" href="#uploading-virtual">Uploading compound sets to the RHS</a>).</p>
+</section>
+<section id="inspirations">
+<h3>Inspirations<a class="headerlink" href="#inspirations" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">F</span></code> button on each compound can be used to bring up a modal with the experimental hits used as <strong>inspirations</strong> / references for the compound design. The same LHS visualisation buttons are available to superimpose the inspiration hit with the follow-up design. When an experimental dataset is displayed, all virtual designs referencing that ligand will have their <code class="docutils literal notranslate"><span class="pre">F</span></code> icon active.</p>
+<img src="_static/media/rhs_curation.png" alt="rhs" width="900px">
+</section>
+<section id="sorting-and-filtering">
+<h3>Sorting and filtering<a class="headerlink" href="#sorting-and-filtering" title="Link to this heading"></a></h3>
+<p>Clicking on the <strong>filter</strong> <img src="_static/media/filter_button.png" alt="filter" width="30px"> icon allows you to sort and filter the compounds by properties present in the uploaded set. Typically you will find scores such as <em>energy_score</em> representing computed binding energy, <em>distance_score</em> representing RMS distance to the fragment inspirations, and <em>score_inspiration</em> which may indicate how well the fragments references have been recapitulated:</p>
+<img src="_static/media/rhs_filter.png" alt="rhs" width="780px">
+<hr class="docutils" />
+</section>
+</section>
+<section id="curating-virtual-compound-sets-rhs">
+<span id="curating-virtual"></span><h2>Curating virtual compound sets (RHS)<a class="headerlink" href="#curating-virtual-compound-sets-rhs" title="Link to this heading"></a></h2>
+<section id="colours-painting">
+<span id="id2"></span><h3>Colours / painting<a class="headerlink" href="#colours-painting" title="Link to this heading"></a></h3>
+<p>You can <strong>paint</strong> compounds with colours that can be renamed, i.e. “Yes”, “No”, “Maybe”:</p>
+<img src="_static/media/rhs_colours.png" alt="lhs" width="400px">
+<p>These labels will be assigned to compounds in your session and can be downloaded as a CSV in the “selected compounds” tab</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The state of the Fragalyis RHS does not persist when you refresh or otherwise leave the page. To export a copy of your curations remember to download a CSV:</p>
+<img src="_static/media/download_csv.png" alt="lhs" width="147px">
+</div>
+</section>
+<section id="arrows">
+<h3>Arrows<a class="headerlink" href="#arrows" title="Link to this heading"></a></h3>
+<p>Use these arrows to quickly apply the current visualisations to adjacent compounds</p>
+<p>This works best when inspirations modal is open, and the inspiration hits and current compound are shown as ligands</p>
+</section>
+<section id="exporting-curations">
+<h3>Exporting curations<a class="headerlink" href="#exporting-curations" title="Link to this heading"></a></h3>
+<p>Once you have <a class="reference internal" href="#colours-painting">painted</a> compounds you can export a CSV which can be used to share your curations/review with others:</p>
+<img src="_static/media/download_csv.png" alt="lhs" width="147px">
+<p>Compounds from different sets they can be viewed together in the “selected compounds” tab.</p>
+<hr class="docutils" />
+</section>
+</section>
+<section id="uploading-virtual-compound-sets-rhs">
+<span id="uploading-virtual"></span><h2>Uploading virtual compound sets (RHS)<a class="headerlink" href="#uploading-virtual-compound-sets-rhs" title="Link to this heading"></a></h2>
+<p>In order to disseminate non-experimental structures/ligands with Fragalysis, they can be uploaded using the “RHS upload” option in the “Hamburger menu”, which takes you to the <code class="docutils literal notranslate"><span class="pre">viewer/upload_cset</span></code> endpoint:</p>
+<img src="_static/media/upload_cset.png" alt="lhs" width="400px">
+<section id="supported-data-format">
+<h3>Supported data format<a class="headerlink" href="#supported-data-format" title="Link to this heading"></a></h3>
+<p>To upload a compound set to the RHS of Fragalysis an SD file (SDF) must be prepared.</p>
+</section>
+<section id="header-molecule">
+<h3>Header molecule<a class="headerlink" href="#header-molecule" title="Link to this heading"></a></h3>
+<p>Fragalysis requires a <strong>header</strong> molecule that defines properties for the whole compound set. The molecule and coordinates of the header molecule are completely ignored, however there are required properties:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">_Name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ver_1.2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ref_url</span></code></p></td>
+<td><p>Reference URL for the algorithm / dataset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">submitter_name</span></code></p></td>
+<td><p>Compound set submitter’s name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">submitter_email</span></code></p></td>
+<td><p>Compound set submitter’s email</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">submitter_institution</span></code></p></td>
+<td><p>Compound set submitter’s institution</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">generation_date</span></code></p></td>
+<td><p>Date associated with the data (ISO 8601)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">method</span></code></p></td>
+<td><p>Algorithm / method name for this compound set</p></td>
+</tr>
+</tbody>
+</table>
+<p>Additionally, if you want to include extra text or numerical properties for ligands in this set you will have to include that property in the header as well with a description value. For example if you want to include a <code class="docutils literal notranslate"><span class="pre">energy_score</span></code> property with each ligand you will need to include this as a property on the header as well, with a text description:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">energy_score</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Computed</span> <span class="pre">binding</span> <span class="pre">energy</span> <span class="pre">(kcal/mol)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>An example header molecule is provided <a class="reference internal" href="#example-header">below</a>.</p>
+</section>
+<section id="ligands">
+<h3>Ligands<a class="headerlink" href="#ligands" title="Link to this heading"></a></h3>
+<p>The required properties for each <strong>non-header</strong> molecule are different:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">_Name</span></code></p></td>
+<td><p>compound name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ref_pdb</span></code></p></td>
+<td><p>Reference protein (Fragalysis observation short-code, e.g. A0310a)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ref_mols</span></code></p></td>
+<td><p>Reference datasets that inspired this molecule/pose (Fragalysis observation short-code, e.g. A0310a)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ligands-and-proteins-sdf-zip-of-pdbs">
+<h3>Ligands and proteins (SDF + ZIP of PDBs)<a class="headerlink" href="#ligands-and-proteins-sdf-zip-of-pdbs" title="Link to this heading"></a></h3>
+<p>If you have computed custom protein conformations associated with these ligands they can be provided in the upload form as a separate ZIP archive. In this case, your <code class="docutils literal notranslate"><span class="pre">ref_pdb</span></code> values for each ligand should be the name of the relevant PDB file.</p>
+</section>
+<section id="example-header">
+<span id="id3"></span><h3>Example Header<a class="headerlink" href="#example-header" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ver_1</span><span class="mf">.2</span>
+     <span class="n">RDKit</span>          <span class="mi">3</span><span class="n">D</span>
+
+ <span class="mi">14</span> <span class="mi">15</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0999</span> <span class="n">V2000</span>
+   <span class="o">-</span><span class="mf">3.4503</span>    <span class="mf">1.0190</span>   <span class="o">-</span><span class="mf">1.1743</span> <span class="n">C</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+   <span class="o">-</span><span class="mf">2.2533</span>    <span class="mf">1.0671</span>   <span class="o">-</span><span class="mf">0.5344</span> <span class="n">N</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+   <span class="o">-</span><span class="mf">2.1679</span>   <span class="o">-</span><span class="mf">0.0620</span>    <span class="mf">0.1865</span> <span class="n">C</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+   <span class="o">-</span><span class="mf">1.3036</span>   <span class="o">-</span><span class="mf">0.8455</span>    <span class="mf">1.1366</span> <span class="n">C</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+   <span class="o">-</span><span class="mf">0.4390</span>   <span class="o">-</span><span class="mf">1.7388</span>    <span class="mf">0.2452</span> <span class="n">C</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+    <span class="mf">0.3763</span>   <span class="o">-</span><span class="mf">0.9521</span>   <span class="o">-</span><span class="mf">0.6603</span> <span class="n">N</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+    <span class="mf">1.4334</span>   <span class="o">-</span><span class="mf">0.1564</span>   <span class="o">-</span><span class="mf">0.1409</span> <span class="n">C</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+    <span class="mf">2.0843</span>   <span class="o">-</span><span class="mf">0.7615</span>    <span class="mf">0.8099</span> <span class="n">N</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+    <span class="mf">3.2028</span>   <span class="o">-</span><span class="mf">0.1250</span>    <span class="mf">1.4766</span> <span class="n">C</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+    <span class="mf">4.1795</span>    <span class="mf">0.3255</span>    <span class="mf">0.4069</span> <span class="n">C</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+    <span class="mf">3.7544</span>    <span class="mf">1.5811</span>   <span class="o">-</span><span class="mf">0.2821</span> <span class="n">C</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+    <span class="mf">1.9712</span>    <span class="mf">1.4810</span>   <span class="o">-</span><span class="mf">0.5890</span> <span class="n">S</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+   <span class="o">-</span><span class="mf">3.3092</span>   <span class="o">-</span><span class="mf">0.7524</span>   <span class="o">-</span><span class="mf">0.0399</span> <span class="n">N</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+   <span class="o">-</span><span class="mf">4.0785</span>   <span class="o">-</span><span class="mf">0.0801</span>   <span class="o">-</span><span class="mf">0.8706</span> <span class="n">O</span>   <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">2</span>  <span class="mi">0</span>
+  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">1</span>  <span class="mi">0</span>
+  <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">1</span>  <span class="mi">0</span>
+  <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">1</span>  <span class="mi">0</span>
+  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">1</span>  <span class="mi">0</span>
+  <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">1</span>  <span class="mi">0</span>
+  <span class="mi">7</span>  <span class="mi">8</span>  <span class="mi">2</span>  <span class="mi">0</span>
+  <span class="mi">8</span>  <span class="mi">9</span>  <span class="mi">1</span>  <span class="mi">0</span>
+  <span class="mi">9</span> <span class="mi">10</span>  <span class="mi">1</span>  <span class="mi">0</span>
+ <span class="mi">10</span> <span class="mi">11</span>  <span class="mi">1</span>  <span class="mi">0</span>
+ <span class="mi">11</span> <span class="mi">12</span>  <span class="mi">1</span>  <span class="mi">0</span>
+  <span class="mi">3</span> <span class="mi">13</span>  <span class="mi">2</span>  <span class="mi">0</span>
+ <span class="mi">13</span> <span class="mi">14</span>  <span class="mi">1</span>  <span class="mi">0</span>
+ <span class="mi">14</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">0</span>
+ <span class="mi">12</span>  <span class="mi">7</span>  <span class="mi">1</span>  <span class="mi">0</span>
+<span class="n">M</span>  <span class="n">END</span>
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">ref_url</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mwinokan</span><span class="o">/</span><span class="n">BulkDock</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">submitter_name</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">Max</span> <span class="n">Winokan</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">submitter_email</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="nb">max</span><span class="o">.</span><span class="n">winokan</span><span class="nd">@diamond</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">submitter_institution</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">DLS</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">generation_date</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">02</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">method</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">Knitwork_CavB_impure</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">SLURM_JOB_ID</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">SLURM_JOB_ID</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">SLURM_JOB_NAME</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">SLURM_JOB_NAME</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">csv_name</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">csv_name</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">scratch_subdir</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">scratch_subdir</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">fragmenstein_runtime</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">fragmenstein_runtime</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">fragmenstein_outcome</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">fragmenstein_outcome</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">fragmenstein_mode</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">fragmenstein_mode</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">fragmenstein_error</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">fragmenstein_error</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">exports</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">exports</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">HIPPO</span> <span class="n">Pose</span> <span class="n">ID</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">HIPPO</span> <span class="n">Pose</span> <span class="n">ID</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">HIPPO</span> <span class="n">Compound</span> <span class="n">ID</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">HIPPO</span> <span class="n">Compound</span> <span class="n">ID</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">smiles</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">smiles</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">ref_pdb</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">protein</span> <span class="n">reference</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">ref_mols</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">fragment</span> <span class="n">inspirations</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">original</span> <span class="n">ID</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">original</span> <span class="n">ID</span>
+
+<span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">compound</span> <span class="n">inchikey</span><span class="o">&gt;</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">compound</span> <span class="n">inchikey</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Fragalysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="notebooks.html" class="btn btn-neutral float-right" title="Jupyter Notebooks in Fragalysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Diamond Light Source.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

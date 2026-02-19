@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Fragalysis'
-copyright = '2025, Diamond Light Source'  # pylint: disable=redefined-builtin
+copyright = '2026, Diamond Light Source'  # pylint: disable=redefined-builtin
 author = 'Diamond Light Source'
 
 # -- General configuration ---------------------------------------------------
@@ -53,6 +53,12 @@ exclude_patterns = []
 
 master_doc = 'index'
 
+# Add any paths that contain extra files we dont need users to see, realtive to this directory.
+exclude_patterns = [
+    '_build',
+    '_static/README.md',
+    'apidocs/**',
+]
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -69,3 +75,4 @@ html_favicon = "_static/media/Fragalysis_Icon Dark Cropped.png"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+

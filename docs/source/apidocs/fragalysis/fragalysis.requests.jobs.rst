@@ -28,16 +28,22 @@ Functions
    * - :py:obj:`get_last_session_project_id <fragalysis.requests.jobs.get_last_session_project_id>`
      - .. autodoc2-docstring:: fragalysis.requests.jobs.get_last_session_project_id
           :summary:
+   * - :py:obj:`clean_filepath <fragalysis.requests.jobs.clean_filepath>`
+     - .. autodoc2-docstring:: fragalysis.requests.jobs.clean_filepath
+          :summary:
+   * - :py:obj:`modify_filepath <fragalysis.requests.jobs.modify_filepath>`
+     - .. autodoc2-docstring:: fragalysis.requests.jobs.modify_filepath
+          :summary:
 
 API
 ~~~
 
-.. py:function:: transfer_snapshot(token: str, snapshot_id: int, session_project_id: int, target_id: int, stack: str = 'production')
+.. py:function:: transfer_snapshot(token: str, snapshot_id: int, session_project_id: int, target_id: int, protein_files: list[str] | None = None, compound_files: list[str] | None = None, stack: str = 'production')
    :canonical: fragalysis.requests.jobs.transfer_snapshot
 
    .. autodoc2-docstring:: fragalysis.requests.jobs.transfer_snapshot
 
-.. py:function:: create_session_project(token: str, author_id: int, target_id: int, project_id: int, *, stack: str = 'production', title: str = 'API created project', description: str = 'API created project')
+.. py:function:: create_session_project(token: str, author_id: int, target_id: int, project_id: int, *, stack: str = 'production', title: str = 'API created project', description: str = 'API created project') -> dict
    :canonical: fragalysis.requests.jobs.create_session_project
 
    .. autodoc2-docstring:: fragalysis.requests.jobs.create_session_project
@@ -51,3 +57,13 @@ API
    :canonical: fragalysis.requests.jobs.get_last_session_project_id
 
    .. autodoc2-docstring:: fragalysis.requests.jobs.get_last_session_project_id
+
+.. py:function:: clean_filepath(path)
+   :canonical: fragalysis.requests.jobs.clean_filepath
+
+   .. autodoc2-docstring:: fragalysis.requests.jobs.clean_filepath
+
+.. py:function:: modify_filepath(path, transfer_root)
+   :canonical: fragalysis.requests.jobs.modify_filepath
+
+   .. autodoc2-docstring:: fragalysis.requests.jobs.modify_filepath

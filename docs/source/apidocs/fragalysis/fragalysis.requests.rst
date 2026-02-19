@@ -13,8 +13,13 @@ Submodules
    :titlesonly:
    :maxdepth: 1
 
-   fragalysis.requests.upload
+   fragalysis.requests.csets
    fragalysis.requests.download
    fragalysis.requests.session
+   fragalysis.requests.fragmenstein
    fragalysis.requests.jobs
+   fragalysis.requests.squonk
+   fragalysis.requests.common
+   fragalysis.requests.knitwork
    fragalysis.requests.urls
+   fragalysis.requests.plotly

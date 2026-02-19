@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using the Fragalysis REST API &mdash; Fragalysis  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=85a095ab" />
+
+  
+    <link rel="shortcut icon" href="_static/Fragalysis_Icon Dark Cropped.png"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using the Fragalysis Python API" href="py_api.html" />
+    <link rel="prev" title="Jupyter Notebooks in Fragalysis" href="notebooks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Fragalysis
+              <img src="_static/Fragalysis_Wordmark Light.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">Fragalysis User Guide</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Jupyter Notebooks in Fragalysis</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using the Fragalysis REST API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-endpoints-from-python-scripts">Using endpoints from python scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#endpoints">Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#api-upload-target-experiments"><code class="docutils literal notranslate"><span class="pre">/api/upload_target_experiments/</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-download-structures"><code class="docutils literal notranslate"><span class="pre">/api/download_structures/</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-user"><code class="docutils literal notranslate"><span class="pre">/api/user</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#seeing-your-tas-set">Seeing your TAS set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#understanding-the-authenticator">Understanding the authenticator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="py_api.html">Using the Fragalysis Python API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Fragalysis</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Using the Fragalysis REST API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-fragalysis-rest-api">
+<h1>Using the Fragalysis REST API<a class="headerlink" href="#using-the-fragalysis-rest-api" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>The list of Fragalysis’ REST API endpoints can be found at <code class="docutils literal notranslate"><span class="pre">&lt;fragalysis</span> <span class="pre">url&gt;/api</span></code>.</p>
+<section id="using-endpoints-from-python-scripts">
+<h2>Using endpoints from python scripts<a class="headerlink" href="#using-endpoints-from-python-scripts" title="Link to this heading"></a></h2>
+<p>Fragalysis API can be accessed from Python scripts directly but there are a couple of things to look out for. Most of the endpoints require authentication. To obtain the authentication token, first log into Fragalysis and find it from the UI or visit the <code class="docutils literal notranslate"><span class="pre">api/token</span></code> endpoint. Cross-site scripting prevention can also sometimes cause problems. To use the endpoints from python scripts, you need to make sure the authentication token and CSRFtoken are set and correct.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urljoin</span>
+
+<span class="n">LANDING_PAGE_URL</span> <span class="o">=</span> <span class="s1">&#39;/viewer/react/landing/&#39;</span>
+
+<span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s2">&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36&quot;</span>
+
+</pre></div>
+</div>
+<p>User agent string does not need a refresh with every browser version, but it needs to be more or less up to date.</p>
+<p>Use the session object so that the server can recognize you between the requests:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">landing_page_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span><span class="n">fragalysis_base_url</span><span class="p">,</span> <span class="n">LANDING_PAGE_URL</span><span class="p">)</span>
+
+<span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="n">USER_AGENT</span><span class="p">,</span>
+    <span class="s1">&#39;Referer&#39;</span><span class="p">:</span> <span class="n">landing_page_url</span><span class="p">,</span>
+    <span class="s1">&#39;Referrer-policy&#39;</span><span class="p">:</span> <span class="s1">&#39;same-origin&#39;</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">landing_page_url</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>GET request to main page usually sets the csrftoken, but in case it doesn’t:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">csrftoken</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">cookies</span><span class="p">[</span><span class="s1">&#39;csrftoken&#39;</span><span class="p">]</span>
+<span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s1">&#39;X-CSRFToken&#39;</span><span class="p">:</span> <span class="n">csrftoken</span><span class="p">,</span>
+<span class="p">})</span>
+
+</pre></div>
+</div>
+<p>If the endpoint requires authentication (as most endpoints do) add the authentication token to cookies:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s1">&#39;sessionid&#39;</span><span class="p">:</span> <span class="n">auth_token</span><span class="p">,</span>
+<span class="p">})</span>
+
+</pre></div>
+</div>
+<p>You are now ready to make a request to the desired endpoint.</p>
+</section>
+<section id="endpoints">
+<h2>Endpoints<a class="headerlink" href="#endpoints" title="Link to this heading"></a></h2>
+<section id="api-upload-target-experiments">
+<h3><code class="docutils literal notranslate"><span class="pre">/api/upload_target_experiments/</span></code><a class="headerlink" href="#api-upload-target-experiments" title="Link to this heading"></a></h3>
+<p>This endpoint lets you view dataset (experiment) info. If used with experiment ID, <code class="docutils literal notranslate"><span class="pre">/api/upload_target_experiments/&lt;id&gt;</span></code> the response contains information only about the selected experiment, othewise the list of all experiments is returned. The single experiment object contains the following fields:</p>
+<ul class="simple">
+<li><p>id: experiment ID</p></li>
+<li><p>code: experiment code</p></li>
+<li><p>pdb_info: downloadable link of pdb info file</p></li>
+<li><p>pdb_info_source_file: pdb info souce file path in Diamond file system</p></li>
+<li><p>mtz_info: downloadable link of mtz info file</p></li>
+<li><p>mtz_info_source_file: mtz info souce file path in Diamond file system</p></li>
+<li><p>cif_info: downloadable link of cif info file</p></li>
+<li><p>cif_info_source_file: cif info souce file path in Diamond file system</p></li>
+<li><p>map_info: list of map info files</p></li>
+<li><p>map_info_source_files: list of map info souce file paths in Diamond file system</p></li>
+<li><p>type: type code</p></li>
+<li><p>pdb_sha256:</p></li>
+<li><p>prefix_tooltip: tooltip shown on hover in the frontend</p></li>
+<li><p>code_prefix: prefix prepended to observation shortcodes</p></li>
+<li><p>cchalf_high_res_shell:</p></li>
+<li><p>cchalf_overall:</p></li>
+<li><p>completeness_high_res_shell:</p></li>
+<li><p>completeness_overall:</p></li>
+<li><p>crystal_mounting_result:</p></li>
+<li><p>data_collection_date:</p></li>
+<li><p>data_collection_outcome:</p></li>
+<li><p>date_model_last_updated:</p></li>
+<li><p>date_status_updated:</p></li>
+<li><p>date_refined:</p></li>
+<li><p>dimple_rfree:</p></li>
+<li><p>dimple_rwork:</p></li>
+<li><p>experiment_comments:</p></li>
+<li><p>experiment_status:</p></li>
+<li><p>experiment_type:</p></li>
+<li><p>experiment_start_date:</p></li>
+<li><p>final_compound_concentration_mm:</p></li>
+<li><p>high_resolution:</p></li>
+<li><p>isig_i_overall:</p></li>
+<li><p>isig_i_high_res_shell:</p></li>
+<li><p>library:</p></li>
+<li><p>library_plate:</p></li>
+<li><p>ligand_confidence:</p></li>
+<li><p>ligand_correlation_coefficient:</p></li>
+<li><p>modelled_smiles:</p></li>
+<li><p>panddarun:</p></li>
+<li><p>pdb_code:</p></li>
+<li><p>processing_pipeline:</p></li>
+<li><p>refinement_comment:</p></li>
+<li><p>refinement_rfree:</p></li>
+<li><p>refinement_rwork:</p></li>
+<li><p>soakdb_entry:</p></li>
+<li><p>soaking_time:</p></li>
+<li><p>source_well:</p></li>
+<li><p>space_group:</p></li>
+<li><p>unit_cell_dimensions:</p></li>
+<li><p>experiment_upload: experiment upload ID</p></li>
+<li><p>status: status code</p></li>
+<li><p>xtalform: crystalform ID</p></li>
+<li><p>refinement_outcome:</p></li>
+<li><p>model_last_updated: user ID</p></li>
+<li><p>refined_by: user ID</p></li>
+<li><p>compounds: the list of compound IDs connected to this experiment</p></li>
+</ul>
+</section>
+<section id="api-download-structures">
+<h3><code class="docutils literal notranslate"><span class="pre">/api/download_structures/</span></code><a class="headerlink" href="#api-download-structures" title="Link to this heading"></a></h3>
+<p>This endpoint allows downloading target data from Fragalysis. Working with this endpoint requires two request: the first one, POST with the payload detailing the data to return compiles the requested data and compresses it into a zipfile. The response returned from POST contains an URL to the file which can then be fetched with GET request to the same endpoipnt. The POST request payload accepts the following parameters for fine-tuning the response content:</p>
+<ul class="simple">
+<li><p>target_name: mandatory. Expects targets <code class="docutils literal notranslate"><span class="pre">title</span></code> field, not <code class="docutils literal notranslate"><span class="pre">display_name</span></code></p></li>
+<li><p>target_access_string: mandatory. Target access string in format <code class="docutils literal notranslate"><span class="pre">lbXXXXX-X</span></code></p></li>
+<li><p>proteins: default ‘’ (empty string, download all observations in target). Comma separated list of observation shortcodes. If used, only the selected observations will be downloaded.</p></li>
+<li><p>all_aligned_structures: default True. Downloads 7 file types:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">aligned_files/*.pdb</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aligned_files/*_apo.pdb</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aligned_files/*_apo-solv.pdb</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aligned_files/*_apo-desolv.pdb</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aligned_files/*_ligand.pdb</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aligned_files/*_ligand.sdf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aligned_files/*_ligand.smi</span></code></p></li>
+</ul>
+</li>
+<li><p>pdb_info: default False. Downloads <code class="docutils literal notranslate"><span class="pre">crystallographic_files/*.pdb</span></code></p></li>
+<li><p>cif_info: default False. Downloads <code class="docutils literal notranslate"><span class="pre">crystallographic_files/*.cif</span></code></p></li>
+<li><p>mtz_info: default False. Downloads <code class="docutils literal notranslate"><span class="pre">crystallographic_files/*.mtz</span></code></p></li>
+<li><p>diff_file: default False. Downloads <code class="docutils literal notranslate"><span class="pre">aligned_files/*_diff.ccp4</span></code></p></li>
+<li><p>event_file: default False. Downloads<code class="docutils literal notranslate"><span class="pre">aligned_files/*_event.ccp4</span></code></p></li>
+<li><p>sigmaa_file: default False. Downloads<code class="docutils literal notranslate"><span class="pre">aligned_files/*_sigmaa.ccp4</span></code></p></li>
+<li><p>map_info: default False. Downloads <code class="docutils literal notranslate"><span class="pre">crystallographic_files/*.ccp4</span></code></p></li>
+<li><p>single_sdf_file: default False. Combines all <code class="docutils literal notranslate"><span class="pre">aligned_files/*_ligand.sdf</span></code> files into a single SDF file</p></li>
+<li><p>metadata_info: default False. Compile and download <code class="docutils literal notranslate"><span class="pre">metadata.csv</span></code></p></li>
+<li><p>static_link: default False. This parameter is ignored.</p></li>
+<li><p>file_url: default ‘’ (empty string). Download previoulsy compiled download. If included, all other parameters are ignored and only the existing zipfile is downloaded</p></li>
+<li><p>trans_matrix_info: default False. Download <code class="docutils literal notranslate"><span class="pre">neighbourhood_transforms.yaml</span></code>, <code class="docutils literal notranslate"><span class="pre">conformer_site_transforms.yaml</span></code> and <code class="docutils literal notranslate"><span class="pre">reference_structure_transforms.yaml</span></code></p></li>
+</ul>
+</section>
+<section id="api-user">
+<h3><code class="docutils literal notranslate"><span class="pre">/api/user</span></code><a class="headerlink" href="#api-user" title="Link to this heading"></a></h3>
+<p>Fragalysis Targets are associated with <em>proposals</em>, also referred to as
+<strong>Target Access Strings</strong> (TAS for short). Proposals, and the individuals who are
+assigned to them, are maintained on a Diamond-managed database.
+Fragalysis uses an <a class="reference external" href="https://github.com/xchem/fragalysis-ispyb-target-access-authenticator">Authenticator</a> service to query the database to enforce rules
+relating to what people can <em>see</em> and contribute to (modify).
+Some proposals are <em>open</em>, which means that Targets associated with these are visible
+to everyone, even those who are not logged-in (authenticated).
+<code class="docutils literal notranslate"><span class="pre">lb18145-1</span></code> is one such proposal.</p>
+<p>A TAS consists of three items: a two-letter <em>code</em>, a proposal <em>number</em>,
+and a hyphen followed by a <em>visit</em> (<em>session number</em>). It is only valid if all three
+are present. Depending on how it’s been configured Fragalysis may also limit the codes
+that can be used, although the use of <code class="docutils literal notranslate"><span class="pre">lb</span></code> and <code class="docutils literal notranslate"><span class="pre">sw</span></code> are commonly permitted.</p>
+<p>So, what you see (and what you can edit) is controlled by your proposal membership.</p>
+<p>For performance reasons, and because the underlying membership database may not always
+be available, the authenticator caches each user’s TAS set after it has been collected.
+The cache, for each user, is refreshed after a few minutes. This approach ensures
+that the authenticator can respond promptly to TAS requests.</p>
+<section id="seeing-your-tas-set">
+<h4>Seeing your TAS set<a class="headerlink" href="#seeing-your-tas-set" title="Link to this heading"></a></h4>
+<p>If you are unsure why you are not seeing material that you think you should be able to,
+it may be due to your TAS membership. Fragalysis exposes an authenticated
+REST API endpoint that you can use to see your TAS membership.</p>
+<p>If you are logged in you can visit <code class="docutils literal notranslate"><span class="pre">/api/user</span></code>.</p>
+<p>Its response will contain the list of TAS values the authenticator believes are
+assigned to you. It is a simple JSON payload, an example is shown below: -</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;abc12345&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ISPYB&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;XChem Python FastAPI TAS Authenticator&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.4.4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://auth.ta-authenticator.svc&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;ping&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;target_access&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;lb12345-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;lb56789-2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;lb80745-254&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <strong>user</strong> section displays your user ID.</p>
+<p>The <strong>version</strong> section provides details of the authenticator providing the TAS
+values including its own API URL. Typically the authenticator is only accessible
+to applications from within the deployment cluster.</p>
+<p>The <strong>ping</strong> section reports the state of the connection between the authenticator and
+the underlying databases. This will be <code class="docutils literal notranslate"><span class="pre">OK</span></code> if the authenticator can access the
+database or <code class="docutils literal notranslate"><span class="pre">Not</span> <span class="pre">OK</span></code> if it cannot.</p>
+<p>The <strong>target_access</strong> section is a list of TAS values assigned to you.</p>
+<p>If you are not logged in you can still obtain details of the authenticator,
+and the <strong>ping</strong> status - everything except a listr of TAS values.</p>
+<blockquote>
+<div><p>The ISPyB authenticator is just one authenticator that can be deployed.
+The administrator may have deployed a different authenticator for you stack,
+so always check the version is what you expect.</p>
+</div></blockquote>
+</section>
+<section id="understanding-the-authenticator">
+<h4>Understanding the authenticator<a class="headerlink" href="#understanding-the-authenticator" title="Link to this heading"></a></h4>
+<p>If you are still unsure about why you are not a member of a particular TAS,
+and you are sure you should be, you can inspect the authenticator, which will
+provide a lot of statistical information relating to its internal operation,
+but also about it’s connection to the proposal database.</p>
+<p>The authenticator exposes a REST API endpoint to do this, which produces a YAML-like
+text response. You will need to provide an <em>access key</em>, which is used to prevent
+unauthorised access.</p>
+<p>Assuming you have the key, authentication statistics can be obtained using a <strong>GET</strong>
+from the exposed endpoint. In the following example the key is <code class="docutils literal notranslate"><span class="pre">4pp4CmJP2wCz2EiGgCctG</span></code>
+(which is not the actual key of course - you will need to contact the Fragalysis
+administrators to get the real key). Here we use <a class="reference external" href="https://httpie.io">httpie</a> (and <code class="docutils literal notranslate"><span class="pre">curl</span></code>)
+to retrieve the statistics: -</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>STATS_KEY=4pp4CmJP2wCz2EiGgCctG
+
+http https:///ta-authenticator.xchem.diamond.ac.uk X-TAAStatsKey:${STATS_KEY}
+
+curl https:///ta-authenticator.xchem.diamond.ac.uk -H X-TAAStatsKey:${STATS_KEY}
+</pre></div>
+</div>
+<p>The response is quite detailed, and many parts of it will only make sense
+if you understand the inner-workings of the authenticator.</p>
+<p>The <strong>auth section</strong> provides information about the type (and version) of authenticator
+that’s being used: -</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ISPYB</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XChem Python FastAPI TAS Authenticator</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.4.0</span>
+</pre></div>
+</div>
+<p>The <strong>code_set section</strong> lists the restricted set of proposal codes that are
+in use. If this list is empty (<code class="docutils literal notranslate"><span class="pre">[]</span></code>) as it is in this example any code is
+permitted by the authenticator: -</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">code_set</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>The code set may be further limited within Fragalysis, which has its own
+additional filter. Typically <code class="docutils literal notranslate"><span class="pre">lb</span></code> and <code class="docutils literal notranslate"><span class="pre">sw</span></code> will be permitted.</p>
+</div></blockquote>
+<p>The <strong>ping section</strong> indicates the health of the database connection. The database
+is responding correctly if <code class="docutils literal notranslate"><span class="pre">status</span></code> is <code class="docutils literal notranslate"><span class="pre">OK</span></code>. The age of the status can also be seen
+along with the dates and times the status changed. In the following example
+the database connection was last checked <code class="docutils literal notranslate"><span class="pre">20</span> <span class="pre">seconds</span></code> ago, it is reported as <code class="docutils literal notranslate"><span class="pre">OK</span></code>,
+and it has been OK for 2 hours (since <code class="docutils literal notranslate"><span class="pre">10:34</span></code> UTC). Before 10:34 you can assume the
+status (database connection) was not OK.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ping</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">age</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20 seconds</span>
+<span class="w">  </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK</span>
+<span class="w">  </span><span class="nt">status_change_age</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2 hours</span>
+<span class="w">  </span><span class="nt">status_change_timestamp</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2025-10-10T10:34:25.537069+00:00&#39;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>While the connection is OK the authenticator can make new proposal queries. If
+it is not OK the authenticator relies on any pre-collected and cached results.
+Results are cached for a user, but the database is only queried when the user
+is actively using Fragalysis.</p>
+</div></blockquote>
+<p>The <strong>user section</strong> displays simplified results for each user.
+If your user ID is not in the <code class="docutils literal notranslate"><span class="pre">users</span> <span class="pre">-&gt;</span> <span class="pre">user_stats</span></code> list then proposals have not
+been collected for you. In this example user <code class="docutils literal notranslate"><span class="pre">abc12345</span></code> is associates with 12 TAS
+that were collected from the database at 10:34 (UTC): -</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">users</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">user_stats</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abc12345</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tas_count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">collected</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2025-10-10T10:34:25.537069+00:00&#39;</span>
+</pre></div>
+</div>
+<p>If there are no users known to the authenticator the list will be empty: -</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">users</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">user_stats</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="notebooks.html" class="btn btn-neutral float-left" title="Jupyter Notebooks in Fragalysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="py_api.html" class="btn btn-neutral float-right" title="Using the Fragalysis Python API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Diamond Light Source.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

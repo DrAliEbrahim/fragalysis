@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jupyter Notebooks in Fragalysis &mdash; Fragalysis  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=85a095ab" />
+
+  
+    <link rel="shortcut icon" href="_static/Fragalysis_Icon Dark Cropped.png"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using the Fragalysis REST API" href="api.html" />
+    <link rel="prev" title="Fragalysis User Guide" href="user_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Fragalysis
+              <img src="_static/Fragalysis_Wordmark Light.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">Fragalysis User Guide</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Jupyter Notebooks in Fragalysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#starting-a-notebook-app">Starting a Notebook app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-tips">General tips</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-notebooks-and-templates">Using Notebooks and templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-data">Moving data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-extra-packages">Installing extra packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#developing-python-code">Developing python code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Using the Fragalysis REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="py_api.html">Using the Fragalysis Python API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Fragalysis</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Jupyter Notebooks in Fragalysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/notebooks.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="jupyter-notebooks-in-fragalysis">
+<h1>Jupyter Notebooks in Fragalysis<a class="headerlink" href="#jupyter-notebooks-in-fragalysis" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Fragalysis offers simplified access to computational resources via JupyterLab. JupyterLab provides a graphical user interface to run Python code via interactive notebooks, terminals, and scripts.</p>
+<section id="starting-a-notebook-app">
+<h2>Starting a Notebook app<a class="headerlink" href="#starting-a-notebook-app" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://data-manager-ui.xchem.diamond.ac.uk/data-manager-ui/">Squonk Data Manager</a></p></li>
+<li><p>Log in via CAS (top right button)</p></li>
+</ol>
+<img src="_static/media/squonk_dm.png" alt="squonk-data-manager" width="600px">
+<ol class="arabic simple" start="3">
+<li><p>If needed, create a new <code class="docutils literal notranslate"><span class="pre">Project</span></code> in the data manager (settings icon top right)</p></li>
+<li><p>Go to the <code class="docutils literal notranslate"><span class="pre">Apps/Jobs</span></code> page (top middle button)</p></li>
+<li><p>Find the <code class="docutils literal notranslate"><span class="pre">JupyterNotebook</span></code> card and click <code class="docutils literal notranslate"><span class="pre">RUN</span></code></p></li>
+<li><p>Configure the job. All the tutorials in this page use the <code class="docutils literal notranslate"><span class="pre">FFF</span> <span class="pre">Dev</span></code> container image, otherwise the default settings are appropriate unless specified.</p></li>
+</ol>
+<img src="_static/media/jupyterlab_config.png" alt="app-config" width="600px">
+<ol class="arabic simple" start="7">
+<li><p>Click run, and wait for the app to initialise. A button <code class="docutils literal notranslate"><span class="pre">OPEN</span></code> will appear</p></li>
+</ol>
+<img src="_static/media/job_instance.png" alt="job-instance" width="600px">
+<ol class="arabic simple" start="8">
+<li><p>Familiarise yourself with the JupyterLab deployment in the <a class="reference internal" href="#general-tips">next section</a></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once you have a notebook app configured and running, you can bookmark the link to the notebook to access it without navigating Squonk</p>
+</div>
+</section>
+<section id="general-tips">
+<span id="id1"></span><h2>General tips<a class="headerlink" href="#general-tips" title="Link to this heading"></a></h2>
+<img src="_static/media/nb_welcome.png" alt="notebook-welcome" width="600px">
+<section id="using-notebooks-and-templates">
+<h3>Using Notebooks and templates<a class="headerlink" href="#using-notebooks-and-templates" title="Link to this heading"></a></h3>
+<p>When you first launch a notebook app with the <code class="docutils literal notranslate"><span class="pre">FFF</span> <span class="pre">Tools</span></code> container image you will only see the <code class="docutils literal notranslate"><span class="pre">welcome.ipynb</span></code> notebook in the left-hand-side file navigator. When you open this notebook you will see two code cells. Clicking the play button in the top menu bar will allow you to execute them and create two interfaces.</p>
+<p>The <em>Get template notebooks</em> interface offers buttons to fetch template notebooks from the template repository.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do note that fetching template notebooks would overwrite any changes you have made to previously copied templates</p>
+</div>
+<p>The <em>Update repositories</em> interface offers buttons to update both the template notebook repository and fragalysis python package to it’s latest version. Use these buttons if you feel that your installation is stale and does not represent what’s shown in this documentation.</p>
+</section>
+<section id="moving-data">
+<h3>Moving data<a class="headerlink" href="#moving-data" title="Link to this heading"></a></h3>
+<p>You can use the file navigator to move files around and create folders. You can also drag and drop files from your local computer to upload data, and right click to download files to your computer.</p>
+</section>
+<section id="installing-extra-packages">
+<h3>Installing extra packages<a class="headerlink" href="#installing-extra-packages" title="Link to this heading"></a></h3>
+<p>Within this JupyterLab app you have full access to a command line and can manage your Python package installations via <code class="docutils literal notranslate"><span class="pre">pip</span></code>, e.g.:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>--user<span class="w"> </span>syndirella
+</pre></div>
+</div>
+</section>
+<section id="developing-python-code">
+<h3>Developing python code<a class="headerlink" href="#developing-python-code" title="Link to this heading"></a></h3>
+<p>If you wish to work on a python package from a github repository you can clone and install it as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/xchem/fragalysis
+<span class="nb">cd</span><span class="w"> </span>fragalysis
+pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_guide.html" class="btn btn-neutral float-left" title="Fragalysis User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="Using the Fragalysis REST API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Diamond Light Source.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

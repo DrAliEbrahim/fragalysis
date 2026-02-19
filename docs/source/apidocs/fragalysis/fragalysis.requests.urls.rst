@@ -43,8 +43,26 @@ Data
    * - :py:obj:`JOB_TRANSFER_URL <fragalysis.requests.urls.JOB_TRANSFER_URL>`
      - .. autodoc2-docstring:: fragalysis.requests.urls.JOB_TRANSFER_URL
           :summary:
+   * - :py:obj:`JOB_REQUEST_URL <fragalysis.requests.urls.JOB_REQUEST_URL>`
+     - .. autodoc2-docstring:: fragalysis.requests.urls.JOB_REQUEST_URL
+          :summary:
    * - :py:obj:`CSET_UPLOAD_URL <fragalysis.requests.urls.CSET_UPLOAD_URL>`
      - .. autodoc2-docstring:: fragalysis.requests.urls.CSET_UPLOAD_URL
+          :summary:
+   * - :py:obj:`SITE_OBSERVATIONS_URL <fragalysis.requests.urls.SITE_OBSERVATIONS_URL>`
+     - .. autodoc2-docstring:: fragalysis.requests.urls.SITE_OBSERVATIONS_URL
+          :summary:
+   * - :py:obj:`TASK_STATUS_URL <fragalysis.requests.urls.TASK_STATUS_URL>`
+     - .. autodoc2-docstring:: fragalysis.requests.urls.TASK_STATUS_URL
+          :summary:
+   * - :py:obj:`USER_URL <fragalysis.requests.urls.USER_URL>`
+     - .. autodoc2-docstring:: fragalysis.requests.urls.USER_URL
+          :summary:
+   * - :py:obj:`PLOT_DATA_URL <fragalysis.requests.urls.PLOT_DATA_URL>`
+     - .. autodoc2-docstring:: fragalysis.requests.urls.PLOT_DATA_URL
+          :summary:
+   * - :py:obj:`TARGET_EXPERIMENT_UPLOADS_URL <fragalysis.requests.urls.TARGET_EXPERIMENT_UPLOADS_URL>`
+     - .. autodoc2-docstring:: fragalysis.requests.urls.TARGET_EXPERIMENT_UPLOADS_URL
           :summary:
 
 API
@@ -104,8 +122,44 @@ API
 
    .. autodoc2-docstring:: fragalysis.requests.urls.JOB_TRANSFER_URL
 
+.. py:data:: JOB_REQUEST_URL
+   :canonical: fragalysis.requests.urls.JOB_REQUEST_URL
+   :value: '/api/job_request/'
+
+   .. autodoc2-docstring:: fragalysis.requests.urls.JOB_REQUEST_URL
+
 .. py:data:: CSET_UPLOAD_URL
    :canonical: fragalysis.requests.urls.CSET_UPLOAD_URL
    :value: '/viewer/upload_cset/'
 
    .. autodoc2-docstring:: fragalysis.requests.urls.CSET_UPLOAD_URL
+
+.. py:data:: SITE_OBSERVATIONS_URL
+   :canonical: fragalysis.requests.urls.SITE_OBSERVATIONS_URL
+   :value: '/api/site_observations'
+
+   .. autodoc2-docstring:: fragalysis.requests.urls.SITE_OBSERVATIONS_URL
+
+.. py:data:: TASK_STATUS_URL
+   :canonical: fragalysis.requests.urls.TASK_STATUS_URL
+   :value: '/viewer/task_status/'
+
+   .. autodoc2-docstring:: fragalysis.requests.urls.TASK_STATUS_URL
+
+.. py:data:: USER_URL
+   :canonical: fragalysis.requests.urls.USER_URL
+   :value: '/api/user'
+
+   .. autodoc2-docstring:: fragalysis.requests.urls.USER_URL
+
+.. py:data:: PLOT_DATA_URL
+   :canonical: fragalysis.requests.urls.PLOT_DATA_URL
+   :value: '/api/plot_data/'
+
+   .. autodoc2-docstring:: fragalysis.requests.urls.PLOT_DATA_URL
+
+.. py:data:: TARGET_EXPERIMENT_UPLOADS_URL
+   :canonical: fragalysis.requests.urls.TARGET_EXPERIMENT_UPLOADS_URL
+   :value: '/api/target_experiment_uploads/'
+
+   .. autodoc2-docstring:: fragalysis.requests.urls.TARGET_EXPERIMENT_UPLOADS_URL

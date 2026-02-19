@@ -29,17 +29,17 @@ Functions
 API
 ~~~
 
-.. py:function:: download()
+.. py:function:: download(destination: str = '.')
    :canonical: fragalysis.widgets.download.download
 
    .. autodoc2-docstring:: fragalysis.widgets.download.download
 
-.. py:function:: _download_ui_1()
+.. py:function:: _download_ui_1(destination: str = '.')
    :canonical: fragalysis.widgets.download._download_ui_1
 
    .. autodoc2-docstring:: fragalysis.widgets.download._download_ui_1
 
-.. py:function:: _download_ui_2(ui_main, stack: str, token: str | None = None)
+.. py:function:: _download_ui_2(ui_main, stack: str, token: str | None = None, destination: str = '.')
    :canonical: fragalysis.widgets.download._download_ui_2
 
    .. autodoc2-docstring:: fragalysis.widgets.download._download_ui_2
