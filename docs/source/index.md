@@ -17,7 +17,7 @@ Crystallographic data are uploaded to Fragalysis via [XChem Align](https://xchem
 
 ---
 
-## Documentation Pages
+# Documentation Pages
 
 ## Fragalysis User Guide
 ```{toctree}
