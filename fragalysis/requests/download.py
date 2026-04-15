@@ -1,3 +1,5 @@
+import datetime
+import random
 import re
 import time
 import mrich
@@ -6,9 +8,14 @@ from pathlib import Path
 from json import JSONDecodeError
 from urllib.parse import urljoin
 
-from .session import _session
-from .urls import PROJECTS_URL, TARGETS_URL, DOWNLOAD_URL, TARGET_EXPERIMENT_UPLOADS_URL
+from .session import _session, debug_requests_on
+from .urls import PROJECTS_URL, TARGETS_URL, DOWNLOAD_URL, TARGET_EXPERIMENT_UPLOADS_URL, RE_DOWNLOAD_TARGET_FILENAME
 
+# Seed the random number generator
+random.seed()
+
+_DOWNLOAD_MIN_SLEEP: int = 2
+_DOWNLOAD_MAX_SLEEP: int = 12
 
 def target_list(
     stack: str = "production",
@@ -76,6 +83,9 @@ def download_target(
     transformation_files: bool = False,
     reflections_files: bool = False,
     extract: bool = True,
+    debug: bool = False,
+    iteration: int = 1,
+    debug_requests: bool = False
 ) -> None:
     """Request a target download from a Fragalysis deployment
 
@@ -97,7 +107,9 @@ def download_target(
     :param transformation_files: Download transformations applied for alignments?
     :param reflections_files: Download reflections and map coefficients (.mtz)?
     :param extract: Extract the downloaded zip / tar archive?
-
+    :param debug: Add print debug displaying the change in download status text
+    :param iteration: A number used to distinguish output messages (important when downloading concurrent targets)
+    :param debug_requests: True to set underlying HTTP request logging to DEBUG
     """
 
     payload = {
@@ -123,14 +135,17 @@ def download_target(
 
     destination = Path(destination)
     if not destination.exists():
-        mrich.error("Download destination does not exist:", destination)
+        mrich.error(f"Download destination does not exist [{iteration}]: {destination}")
         return None
+
+    if debug_requests:
+        debug_requests_on()
 
     with _session(stack, token) as session:
 
         download_api_url = urljoin(session.root, DOWNLOAD_URL)
 
-        with mrich.loading("Requesting download"):
+        with mrich.loading(f"Requesting download [{iteration}]"):
 
             start_download_process_response = session.post(
                 download_api_url,
@@ -139,50 +154,63 @@ def download_target(
 
         if start_download_process_response.ok:
             response_json = start_download_process_response.json()
-
+            # We might get a file_url or a task_status_url
+            file_url = response_json.get("file_url")
             task_status_url = response_json.get("task_status_url")
+            if not task_status_url and not file_url:
+                mrich.error(f"No task or file URL returned [{iteration}] text={start_download_process_response.text}")
+                raise ValueError("No task or file URL returned")
 
-            if not task_status_url:
-                raise ValueError("No task URL returned")
+            # If given a task monitor it until we get a file link
+            if task_status_url:
+                # We continue checking the 'task' URL
+                # until we find what looks like a download filename
+                task_status_url = urljoin(session.root, task_status_url)
+                file_url_re = re.compile(RE_DOWNLOAD_TARGET_FILENAME)
+                last_status_text = ""
+                last_message = ""
+                file_url = ""
+                with mrich.loading(f"Preparing download [{iteration}] (to '{destination}' task-url '{task_status_url}')"):
+                    for _ in range(100_000):
 
-            ### CONTINUOUSLY MONITOR DOWNLOAD TASK
+                        status = session.get(task_status_url)
+                        if debug and status.text != last_status_text:
+                            last_status_text = status.text
+                            now = datetime.datetime.now()
+                            print(f"{now.strftime('%Y-%m-%d %H:%M')} [{iteration}] {status.text}")
+                        if status.status_code != 200:
+                            mrich.error(f"API did not respond with 200 [{iteration}]: {status.status_code} {status.text}")
+                            mrich.error(f"Task Status URL [{iteration}]: '{task_status_url}'")
+                            return
 
-            task_status_url = urljoin(session.root, task_status_url)
+                        try:
+                            status_json = status.json()
+                        except JSONDecodeError:
+                            continue
 
-            with mrich.loading("Preparing download"):
-                for i in range(100_000):
+                        last_message = status_json.get("messages", "")
+                        if last_message and file_url_re.match(last_message):
+                            file_url = last_message
+                            break
 
-                    status = session.get(task_status_url)
+                        # Git it a rest - with a new random sleep period
+                        time.sleep(random.randint(_DOWNLOAD_MIN_SLEEP, _DOWNLOAD_MAX_SLEEP))
 
-                    try:
-                        status_json = status.json()
-                    except JSONDecodeError:
-                        continue
+                    else:
+                        mrich.error(f"Download took too long [{iteration}]")
+                        raise ValueError
 
-                    started = status_json.get("started", False)
-                    finished = status_json.get("finished", False)
-
-                    if finished:
-                        break
-
-                    time.sleep(0.5)
-
-                else:
-                    mrich.error("Timed out")
-                    raise ValueError
-
-            file_url = status_json.get("messages", "")
-
-            if not re.search(r"^\/code\/media\/downloads\/.*\.tar\.gz$", file_url):
-                mrich.error("No tarball in payload")
+            # If we get here we expect to have found a file-url in the API message
+            if not file_url:
+                mrich.error(f"Message does not name a tarball [{iteration}] message='{last_message}'")
 
             ### DOWNLOAD PREPARED PAYLOAD
 
             local_filename = destination / Path(file_url).name
 
-            with mrich.loading("Downloading..."):
+            with mrich.loading(f"Downloading [{iteration}]..."):
 
-                mrich.writing(local_filename)
+                mrich.writing(f"[{iteration}] {local_filename}")
 
                 with session.get(
                     download_api_url,
@@ -196,12 +224,12 @@ def download_target(
                             f.write(chunk)
 
             if not extract:
-                mrich.success("Download complete:", local_filename)
+                mrich.success(f"Download complete [{iteration}]:", local_filename)
                 return local_filename
 
             if file_url.endswith(".zip"):
 
-                with mrich.loading("Unzipping..."):
+                with mrich.loading(f"Unzipping [{iteration}]..."):
 
                     import zipfile
 
@@ -209,13 +237,13 @@ def download_target(
 
                     target_dir.mkdir(exist_ok=True)
 
-                    mrich.writing(target_dir)
+                    mrich.writing(f"[{iteration}] {target_dir}")
                     with zipfile.ZipFile(local_filename, "r") as zip_ref:
                         zip_ref.extractall(target_dir)
 
             elif file_url.endswith(".tar.gz"):
 
-                with mrich.loading("Expanding tarball..."):
+                with mrich.loading(f"Expanding tarball [{iteration}]..."):
 
                     import tarfile
 
@@ -225,17 +253,20 @@ def download_target(
 
                     target_dir.mkdir(exist_ok=True)
 
-                    mrich.writing(target_dir)
+                    mrich.writing(f"[{iteration}] {target_dir}")
                     with tarfile.open(local_filename, "r:gz") as tar_ref:
                         tar_ref.extractall(target_dir)
 
             else:
-                raise ValueError("Unsupported filetype")
+                raise ValueError(f"Unsupported filetype [{iteration}]")
 
-            mrich.success("Download complete:", target_dir)
+            mrich.success(f"Download complete [{iteration}]:", target_dir)
 
         else:
-            mrich.error("Download Failed")
+            # Failed to start the download
+            status_code = start_download_process_response.status_code
+            text = start_download_process_response.text
+            mrich.error(f"Initiation of download failed [{iteration}]: code={status_code} text={text}")
             return None
 
     return target_dir
@@ -284,7 +315,7 @@ def target_uploads(
             formatted[key]["target_name"]=d["target_name"]
             formatted[key]["target_access_string"]=d["proposal_number"]
             formatted[key]["project_id"]=d["project"]
-            
+
             # reformat the serialised data
 
             formatted[key]["uploads"].append(dict(
@@ -301,13 +332,13 @@ def target_uploads(
     for key, d in formatted.items():
 
         new_d = {}
-        
+
         # general information
         new_d["target_id"]=d["target_id"]
         new_d["target_name"]=d["target_name"]
         new_d["target_access_string"]=d["target_access_string"]
         new_d["project_id"]=d["project_id"]
-        
+
         # sort uploads
         sorted_uploads = sorted(d["uploads"], key=lambda d: d["upload_index"])
 
@@ -317,7 +348,7 @@ def target_uploads(
 
         if not statistics_only:
             new_d["uploads"] = sorted_uploads
-        
+
         formatted[key] = new_d
 
     return formatted
