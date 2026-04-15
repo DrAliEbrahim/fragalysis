@@ -1,6 +1,10 @@
 
 # Using the Fragalysis Python API
 
+```{toctree}
+:maxdepth: 1
+```
+
 A work in progress Python package to interface with the Fragalysis web service via the [REST API](api) is available at [github.com/xchem/fragalysis](https://github.com/xchem/fragalysis).
 
 ## Installation

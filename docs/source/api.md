@@ -1,6 +1,10 @@
 
 # Using the Fragalysis REST API
 
+```{toctree}
+:maxdepth: 1
+```
+
 The list of Fragalysis' REST API endpoints can be found at `<fragalysis url>/api`.
 
 ## Using endpoints from python scripts
