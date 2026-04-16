@@ -28,7 +28,7 @@ targets = target_list(stack="production", token=token)
 
 The `token` keyword can be ommitted if only accessing public targets, and `stack` can be either "production", "staging" or the URL of another Fragalysis deployment.
 
-The token can be found in the main menu in Fragalysis (Menu > Get token)
+The token can be found in the main menu in the Fragalysis UI (Menu > Get token), or visit `<fragalysis url>/api/token`
 
 ### Download target
 
@@ -48,7 +48,7 @@ The `download_target` method which will need updating is in https://github.com/x
 
 The available POST request parameters to `/api/download_structures` can be seen in the JavaScript code for the frontend https://github.com/xchem/fragalysis-frontend/blob/staging/js/components/snapshot/modals/downloadStructuresDialog.js (see variables MAP_FILES, CRYSTALLOGRAPHIC_FILES, PERMALINK_OPTIONS, OTHERS)
 
-Relevant developer contacts on github are @mwinokan, @kaliif, and @boriskovar-m2ms.
+Relevant developer contacts on github are @cvallee, @alanbchristie, @kaliif, and @boriskovar-m2ms.
 ```
 
 ## Tracking experiment uploads
