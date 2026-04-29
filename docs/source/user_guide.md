@@ -20,6 +20,7 @@ Fragalysis can be used to explore data in a number of ways:
 
 * [Browsing Experimental data](#browsing-experimental-data)
 * [Curating Experimental data](#curating-experimental-data)
+* [Downloading Experimental data](#downloading-experimental-data)
 * [Uploading assay measurements or computed scores](#uploading-assays)
 
 **Computed Structures (RHS)**
@@ -38,7 +39,7 @@ Fragalysis can be used to explore data in a number of ways:
 
 ### Navigating the homepage
 
-Navigating to the Fragalysis homepage for the first time you will be prompted to log in with your FedID. This will allow you to view the "private targets" associated with your Diamond user account, alongside public and legacy targets:
+When navigating to the Fragalysis homepage you will see targets listed under "Public", "Private", and "Legacy". If you have access to private targets you will be prompted to log in with your Diamond Light Source FedID:
 
 ```{image} _static/media/homepage_login.png
 :width: 1000px
@@ -224,6 +225,68 @@ https://fragalysis.diamond.ac.uk/viewer/react/preview/direct/
 - `target/A71EV2A`: specifies the target name
 - `tas/lb32627-66`: specifies the target access string
 - `compound/ASAP-0016733-001/L/exact`: shows the ligand (`L`) representation for exact `compound` aliases match `ASAP-0016733-001`
+
+---
+
+(downloading-experimental-data)=
+## Downloading experimental data
+
+You can download experimental structures directly from the Fraglaysis UI. At the top of the Fragalysis viewer interface, you will see a download button:
+
+```{image} _static/media/download_button.png
+:width: 1000px
+:alt: Download button
+```
+
+This will open the download interface. By default the download will select "All structures", but there are various selections that allow you to customise your download:
+
+```{image} _static/media/download_interface.png
+:width: 1000px
+:alt: Download interface
+```
+
+| Option                                         | What it does                                                                                     |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| ***Subset selection***                         |                                                                                                  |
+| **All structures**                             | Downloads every aligned structure available for the target (`.pdb`)                              |
+| **Structures displayed in the 3D display**     | Downloads only aligned structures currently visible in the viewer (`.pdb`)                       |
+| **Structures selected in the Hit Navigator**   | Downloads only aligned structures you’ve explicitly selected in the viewer interface (`.pdb`)    |
+| **Structures associated with the active tags** | Filters aligned structures based on active annotation tags and downloads those (`.pdb`)          |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------|
+| ***Map files (re-aligned to reference)***      |                                                                                                  |
+| **PanDDA Event maps**                          | PanDDA output highlighting ligand-binding events; best for detecting signal over noise (`.ccp4`) |
+| **Conventional inspection maps**               | 2Fo-Fc electron density maps used for model building and validation (`.ccp4`)                    |
+| **Conventional residual maps**                 | Fo-Fc difference maps showing unmodelled or incorrectly modelled density (`.ccp4`)               |
+| **Transformations applied for alignments**     | Alignment matrices used to superpose structures/maps onto a reference frame                      |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------|
+| ***Crystallographic files***                   |                                                                                                  |
+| **Coordinate files (not re-aligned)**          | atomic coordinates in their original reference frame (not aligned) (`.pdb`)                      |
+| **Reflections and map coefficients**           | Structure factor data and map coefficients used for map calculation and refinement (`.mtz`)      |
+| **Ligand definitions and geometry restraints** | Restraints and chemical definitions needed for ligand refinement (`.cif`)                        |
+| **Real-space map files**                       | Maps in real-space format (large files; often unnecessary unless specifically needed) (`.map`)   |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------|
+| ***Version of data stored in permalink***      |                                                                                                  |
+| **Incremental (always up-to-date)**            | Link always reflects the latest dataset as new structures are added                              |
+| **Preserved (snapshot)**                       | Fixed dataset frozen at the current state; reproducible and unchanging                           |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------|
+| ***Other***                                    |                                                                                                  |
+| **Single SDF of all ligands**                  | One file containing all ligand structures (useful for cheminformatics workflows)                 |
+| **Computed compound sets**                     | Includes processed/annotated ligand sets (e.g., clustering, scoring, or filtering outputs)       |
+| **SoakDB CSV and SQLite files**                | Metadata database containing experiment details, useful for large-scale analysis                 |
+
+After selecting files, select "Prepare download" to zip your files. Once this is complete (be patient, this can take a few minutes) the "Download" and "Copy permalink" buttons will no longer be greyed out, allowing you to commence the download. These download options, as well as the others available are explained here:
+
+| Option                                      | What it does                                                                       | When to use it                                                               |
+| ------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| **Prepare download**                        | Packages your selected files into a `.zip` downloadable bundle                     | Always use this option if downloading a `.zip` from the download interface.  |
+| **Copy permalink** (prepare download first) | Copies a persistent URL that encodes all your current selections                   | Sharing datasets with collaborators or saving your exact selection for later |
+| **Download** (prepare download first)       | Once prepared, this immediately downloads the dataset with your current selections | Use when you’re ready to grab the data locally                               |
+| **(For coders) Copy JSON for API call**     | Copies a structured JSON representation of your selection for programmatic access  | Scripting workflows, automation, or pipeline integration                     |
+| **Show Examples**                           | Opens example usage GitHub page                                                    | If you need useful example / template code.                                  |
+
+### Interpreting the download
+
+
 
 ---
 
