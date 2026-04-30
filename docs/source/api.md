@@ -134,9 +134,9 @@ This endpoint allows downloading target data from Fragalysis. Working with this 
 - proteins: default '' (empty string, download all observations in target). Comma separated list of observation shortcodes. If used, only the selected observations will be downloaded.
 - all_aligned_structures: default True. Downloads 7 file types:
   - `aligned_files/*.pdb`
-  - `aligned_files/*_apo.pdb`
-  - `aligned_files/*_apo-solv.pdb`
-  - `aligned_files/*_apo-desolv.pdb`
+  - `aligned_files/*_delig.pdb`
+  - `aligned_files/*_delig-solv.pdb`
+  - `aligned_files/*_delig-desolv.pdb`
   - `aligned_files/*_ligand.pdb`
   - `aligned_files/*_ligand.sdf`
   - `aligned_files/*_ligand.smi`

@@ -18,9 +18,9 @@ Fragalysis can be used to explore data in a number of ways:
 
 **Experimental Structures (LHS)**
 
-* [Browsing Experimental data](#browsing-experimental-data)
-* [Curating Experimental data](#curating-experimental-data)
-* [Downloading Experimental data](#downloading-experimental-data)
+* [Browsing experimental data](#browsing-experimental-data)
+* [Curating experimental data](#curating-experimental-data)
+* [Downloading experimental data](#downloading-experimental-data)
 * [Uploading assay measurements or computed scores](#uploading-assays)
 
 **Computed Structures (RHS)**
