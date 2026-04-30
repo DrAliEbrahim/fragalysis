@@ -296,22 +296,23 @@ Two important top level files are `metadata.csv` and `smiles.smi`. These are bot
 
 The aligned directory contains a subdirectory for each dataset that was selected for downloading, aligned to a common reference through [XChem Align](https://xchem-align.readthedocs.io) processing as they appear in the viewer interface. Depending on your selection of options when downloading the data, the follow file suffixes may be present:
 
-==IMPORTANT==
-`.ccp4` maps are optimised to work with NGL viewer. If viewing in PyMOL or COOT, files that align with the XCA aligned model have the suffix `crystallographic.ccp4`
+> **⚠️ IMPORTANT**  
+> `.ccp4` maps are optimised to work with NGL viewer.  
+> If viewing in PyMOL or COOT, files that align with the XCA aligned model have the suffix `_crystallographic.ccp4`.
 
 
-| File pattern                     | Description                                                                                                                             |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `[crystal-name].pdb` | Full model. Protein, ligand, and solvent molecules                                                                          |
+| File pattern                                  | Description                                                                                                                             |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `[crystal-name].pdb`                          | Full model. Protein, ligand, and solvent molecules                                                                          |
 | `[crystal-name]_delig-desolv.pdb`             | Protein model only. Ligand and solvent molecules removed                                                                        |
 | `[crystal-name]_delig-solv.pdb`               | Solvent molecules only. Protein and ligand molecules removed                                                              |
 | `[crystal-name]_delig.pdb`                    | Protein and solvent. Ligand molecules removed                                                                      |
-| `[crystal-name]_event.ccp4`  | PanDDA event electron density map cut to around 12 Angstrom around the ligand; background-corrected reflection data higher signal-to-noise enhances ligand evidence corresponding to the PDB file   |
-| `[crystal-name]_sigmaa.ccp4` | 2mFo-DFc σA-weighted map cut to around 12 Angstrom around the ligand; estimate of the true electron density from diffraction data and atomic model           |
-| `[crystal-name]_diff.ccp4`   | mFo-DFc σA-weighted difference map cut to around 12 Angstrom around the ligand; Negative density indicates model without supporting density, positive density indicates unmodelled features |
-| `[crystal-name]_event_crystallographic.ccp4`  | PanDDA event electron density map cut to around 12 Angstrom around the ligand; background-corrected reflection data higher signal-to-noise enhances ligand evidence corresponding to the PDB file   |
-| `[crystal-name]_sigmaa_crystallographic.ccp4` | 2mFo-DFc σA-weighted map cut to around 12 Angstrom around the ligand; estimate of the true electron density from diffraction data and atomic model           |
-| `[crystal-name]_diff_crystallographic.ccp4`   | mFo-DFc σA-weighted difference map cut to around 12 Angstrom around the ligand; Negative density indicates model without supporting density, positive density indicates unmodelled features |
+| `[crystal-name]_event.ccp4`                   | PanDDA event electron density map cut to around 12 Angstrom around the ligand;<br> background-corrected reflection data higher signal-to-noise enhances ligand evidence corresponding to the PDB file   |
+| `[crystal-name]_sigmaa.ccp4`                  | 2mFo-DFc σA-weighted map cut to around 12 Angstrom around the ligand;<br> estimate of the true electron density from diffraction data and atomic model           |
+| `[crystal-name]_diff.ccp4`                    | mFo-DFc σA-weighted difference map cut to around 12 Angstrom around the ligand;<br> Negative density indicates model without supporting density, positive density indicates unmodelled features |
+| `[crystal-name]_event_crystallographic.ccp4`  | PanDDA event electron density map cut to around 12 Angstrom around the ligand;<br> background-corrected reflection data higher signal-to-noise enhances ligand evidence corresponding to the PDB file   |
+| `[crystal-name]_sigmaa_crystallographic.ccp4` | 2mFo-DFc σA-weighted map cut to around 12 Angstrom around the ligand;<br> estimate of the true electron density from diffraction data and atomic model           |
+| `[crystal-name]_diff_crystallographic.ccp4`   | mFo-DFc σA-weighted difference map cut to around 12 Angstrom around the ligand;<br> Negative density indicates model without supporting density, positive density indicates unmodelled features |
 | `[crystal-name]_ligand.pdb`       | Ligand structure in PDB format                                                                                                      |
 | `[crystal-name]_ligand.sdf`       | Ligand structure in SDF format                                                                                                      |
 | `[crystal-name]_ligand.smi`       | Ligand structure in SMILES format                                                                                                |
