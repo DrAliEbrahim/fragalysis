@@ -288,9 +288,7 @@ After selecting what files you want, select "Prepare download" to zip your files
 
 A Fragalysis download will contain a minimum of 2 directories, `aligned_files` and `crytallographic_files`. The download will typically include the additional directories `extra_files`, `scripts` and `yaml_files`, as well as some additional files at the top level directory.
 
-Two important top level files are `metadata.csv` and `smiles.smi`. These are both plain-text files. `metadata.csv` will contain information about the context of each ligand and may provide a convenient way to browse through smiles, site labels and PDB codes for each ligand. `smiles.smi` contains a list of all smiles strings that you have downloaded separated by commans.
-
-`[target-name]_combined.sdf` may also be present which will contain all the ligand sdf files in a single sdf file.
+Two important top level files are `metadata.csv` and `smiles.smi`. These are both plain-text files. `metadata.csv` will contain information about the context of each ligand and may provide a convenient way to browse through smiles, site labels and PDB codes for each ligand. `smiles.smi` contains a list of all smiles strings that you have downloaded separated by commans. `[target-name]_combined.sdf` may also be present which will contain all the ligand sdf files in a single sdf file.
 
 ### Aligned directory
 
