@@ -337,8 +337,8 @@ Some examples of extra files:
 | File pattern                     | Description                                                                                                                                  |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `protein-sequence.fasta`         | Target sequence in FASTA format                                                                                                        |
-| `soakdb_[session_number].sqlite` | Reflection data corresponding to the PDB file                                                                                                |
-| `soakdb_[session_number].csv`    | Ligand structure in CIF format                                                                                               |
+| `soakdb_[session_number].sqlite` | SoakDB file in SQLite format <br> - Experimental details for each crystal, including soaking conditions, data collection parameters, and processing results. |
+| `soakdb_[session_number].csv`    | SoakDB file in CSV format <br> - Experimental details for each crystal, including soaking conditions, data collection parameters, and processing results.           |
 
 ---
 
