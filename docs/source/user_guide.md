@@ -246,29 +246,29 @@ This will open the download interface. By default the download will select "All 
 ```
 
 | Option                                         | What it does                                                                                     |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+|----------------------------------------------- | -------------------------------------------------------------------------------------------------|
 | ***Subset selection***                         |                                                                                                  |
 | **All structures**                             | Downloads every aligned structure available for the target (`.pdb`)                              |
 | **Structures displayed in the 3D display**     | Downloads only aligned structures currently visible in the viewer (`.pdb`)                       |
-| **Structures selected in the Hit Navigator**   | Downloads only aligned structures you’ve explicitly selected in the viewer interface (`.pdb`)    |
+| **Structures selected in the Hit Navigator**   | Downloads only aligned structures you’ve explicitly selected in the hit navigator (`.pdb`)       |
 | **Structures associated with the active tags** | Filters aligned structures based on active annotation tags and downloads those (`.pdb`)          |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------------|
+|  |  |
 | ***Map files (re-aligned to reference)***      |                                                                                                  |
 | **PanDDA Event maps**                          | PanDDA output highlighting ligand-binding events; best for detecting signal over noise (`.ccp4`) |
 | **Conventional inspection maps**               | 2Fo-Fc electron density maps used for model building and validation (`.ccp4`)                    |
 | **Conventional residual maps**                 | Fo-Fc difference maps showing unmodelled or incorrectly modelled density (`.ccp4`)               |
 | **Transformations applied for alignments**     | Alignment matrices used to superpose structures/maps onto a reference frame                      |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------------|
+| |  |
 | ***Crystallographic files***                   |                                                                                                  |
-| **Coordinate files (not re-aligned)**          | atomic coordinates in their original reference frame (not aligned) (`.pdb`)                      |
+| **Coordinate files (not re-aligned)**          | Atomic coordinates in their original reference frame (not aligned) (`.pdb`)                      |
 | **Reflections and map coefficients**           | Structure factor data and map coefficients used for map calculation and refinement (`.mtz`)      |
 | **Ligand definitions and geometry restraints** | Restraints and chemical definitions needed for ligand refinement (`.cif`)                        |
 | **Real-space map files**                       | Maps in real-space format (large files; often unnecessary unless specifically needed) (`.map`)   |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------------|
+|  |  |
 | ***Version of data stored in permalink***      |                                                                                                  |
-| **Incremental (always up-to-date)**            | Link always reflects the latest dataset as new structures are added                              |
-| **Preserved (snapshot)**                       | Fixed dataset frozen at the current state; reproducible and unchanging                           |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------------|
+| **Incremental (always up-to-date)**            | Link always reflects the latest dataset as new structures are added                               |
+| **Preserved (snapshot)**                       | Fixed dataset frozen at the current state; reproducible and unchanging                            |
+|  |  |
 | ***Other***                                    |                                                                                                  |
 | **Single SDF of all ligands**                  | One file containing all ligand structures (useful for cheminformatics workflows)                 |
 | **Computed compound sets**                     | Includes processed/annotated ligand sets (e.g., clustering, scoring, or filtering outputs)       |
@@ -279,7 +279,7 @@ After selecting files, select "Prepare download" to zip your files. Once this is
 | Option                                      | What it does                                                                       | When to use it                                                               |
 | ------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | **Prepare download**                        | Packages your selected files into a `.zip` downloadable bundle                     | Always use this option if downloading a `.zip` from the download interface.  |
-| **Copy permalink** (prepare download first) | Copies a persistent URL that encodes all your current selections                   | Sharing datasets with collaborators or saving your exact selection for later |
+| **Copy permalink** (prepare download first) | Copies a persistent URL that encodes all your current selections                   | Sharing datasets or saving your exact selection for later |
 | **Download** (prepare download first)       | Once prepared, this immediately downloads the dataset with your current selections | Use when you’re ready to grab the data locally                               |
 | **(For coders) Copy JSON for API call**     | Copies a structured JSON representation of your selection for programmatic access  | Scripting workflows, automation, or pipeline integration                     |
 | **Show Examples**                           | Opens example usage GitHub page                                                    | If you need useful example / template code.                                  |
