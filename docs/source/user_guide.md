@@ -6,7 +6,7 @@
 
 Fragalysis is a web-based platform for the visualisation, comparison, and analysis of fragment-bound protein crystal structures, assay measurements, and follow-up virtual ligand screens. It can effectively be divided into:
 
-**Experimental** fragment screening data processed via [XChem Align](https://xchem-align.readthedocs.io) and uploaded to Fragalysis, curated and downloaded via the **"left-hand side" (LHS)** of Fragalysis.
+**Experimental** fragment screening data processed via [XChemAlign](https://xchem-align.readthedocs.io) and uploaded to Fragalysis, curated and downloaded via the **"left-hand side" (LHS)** of Fragalysis.
 
 **Computed** follow-up designs from virtual compound sets uploaded to Fragalysis, curated and downloaded via the **"right-hand side" (RHS)** of Fragalysis.
 
@@ -294,7 +294,7 @@ Two important top level files are `metadata.csv` and `smiles.smi`. These are bot
 
 ### Aligned directory
 
-The aligned directory contains a subdirectory for each dataset that was selected for downloading, aligned to a common reference through [XChem Align](https://xchem-align.readthedocs.io) processing as they appear in the viewer interface. Depending on your selection of options when downloading the data, the follow file suffixes may be present:
+The aligned directory contains a subdirectory for each dataset that was selected for downloading, aligned to a common reference through [XChemAlign](https://xchem-align.readthedocs.io) processing as they appear in the viewer interface. Depending on your selection of options when downloading the data, the follow file suffixes may be present:
 
 > **⚠️ IMPORTANT**  
 > `.ccp4` maps are optimised to work with NGL viewer.  
@@ -307,12 +307,12 @@ The aligned directory contains a subdirectory for each dataset that was selected
 | `[crystal-name]_delig-desolv.pdb`             | Protein model only. Ligand and solvent molecules removed                                                                        |
 | `[crystal-name]_delig-solv.pdb`               | Solvent molecules only. Protein and ligand molecules removed                                                              |
 | `[crystal-name]_delig.pdb`                    | Protein and solvent. Ligand molecules removed                                                                      |
-| `[crystal-name]_event.ccp4`                   | PanDDA event electron density map cut to around 12 Angstrom around the ligand;<br> background-corrected reflection data higher signal-to-noise enhances ligand evidence corresponding to the PDB file   |
-| `[crystal-name]_sigmaa.ccp4`                  | 2mFo-DFc σA-weighted map cut to around 12 Angstrom around the ligand;<br> estimate of the true electron density from diffraction data and atomic model           |
-| `[crystal-name]_diff.ccp4`                    | mFo-DFc σA-weighted difference map cut to around 12 Angstrom around the ligand;<br> Negative density indicates model without supporting density, positive density indicates unmodelled features |
-| `[crystal-name]_event_crystallographic.ccp4`  | PanDDA event electron density map cut to around 12 Angstrom around the ligand;<br> background-corrected reflection data higher signal-to-noise enhances ligand evidence corresponding to the PDB file   |
-| `[crystal-name]_sigmaa_crystallographic.ccp4` | 2mFo-DFc σA-weighted map cut to around 12 Angstrom around the ligand;<br> estimate of the true electron density from diffraction data and atomic model           |
-| `[crystal-name]_diff_crystallographic.ccp4`   | mFo-DFc σA-weighted difference map cut to around 12 Angstrom around the ligand;<br> Negative density indicates model without supporting density, positive density indicates unmodelled features |
+| `[crystal-name]_event.ccp4`                   | PanDDA event electron density map cut to around 12 Å around the ligand<br> - Background-corrected reflection data higher signal-to-noise enhances ligand evidence corresponding to the PDB file   |
+| `[crystal-name]_sigmaa.ccp4`                  | 2mFo-DFc σA-weighted map cut to around 12 Å around the ligand<br> - Estimate of the true electron density from diffraction data and atomic model           |
+| `[crystal-name]_diff.ccp4`                    | mFo-DFc σA-weighted difference map cut to around 12 Å around the ligand <br> - Negative density indicates model without supporting density, positive density indicates unmodelled features |
+| `[crystal-name]_event_crystallographic.ccp4`  | PanDDA event electron density map cut to around 12 Å around the ligand<br> - Background-corrected reflection data higher signal-to-noise enhances ligand evidence corresponding to the PDB file   |
+| `[crystal-name]_sigmaa_crystallographic.ccp4` | 2mFo-DFc σA-weighted map cut to around 12 Å around the ligand<br> - Estimate of the true electron density from diffraction data and atomic model           |
+| `[crystal-name]_diff_crystallographic.ccp4`   | mFo-DFc σA-weighted difference map cut to around 12 Å around the ligand <br> - Negative density indicates model without supporting density, positive density indicates unmodelled features |
 | `[crystal-name]_ligand.pdb`       | Ligand structure in PDB format                                                                                                      |
 | `[crystal-name]_ligand.sdf`       | Ligand structure in SDF format                                                                                                      |
 | `[crystal-name]_ligand.smi`       | Ligand structure in SMILES format                                                                                                |
@@ -320,7 +320,7 @@ The aligned directory contains a subdirectory for each dataset that was selected
 
 ### Crystallographic directory
 
-The `crystallographic_files` directory contains versions of data found in the aligned folder prior to [XChem Align](https://xchem-align.readthedocs.io) processing. Depending on your selection of options when downloading the data the follow file suffixes may be present:
+The `crystallographic_files` directory contains versions of data found in the aligned folder prior to [XChemAlign](https://xchem-align.readthedocs.io) processing. Depending on your selection of options when downloading the data the follow file suffixes may be present:
 
 | File pattern                | Description                                                                                                                                  |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -329,10 +329,9 @@ The `crystallographic_files` directory contains versions of data found in the al
 | `[crystal_name].cif`        | Ligand structure in CIF format                                                                                               |
 
 
-### extra_files
+### Extra files
 
-If this is present the files in this folder will have been added by the uploader of the data and has no defined structure. As a result we cannot guess what the contents of the file may be but we hope that the uploader of the extra files will have provided a similar
-Files in this folder will be added by the uploader and are largely freeform. Hopefully there will be a readme inside to describe each of the added files.
+If this is present the files in this folder will have been added by the uploader of the data and has no defined structure. As a result we cannot guess what the contents of the file may be but we hope that the uploader of the extra files will have provided a readme inside to describe each of the added files.
 
 ---
 
