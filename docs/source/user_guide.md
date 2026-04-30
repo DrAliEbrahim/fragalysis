@@ -19,8 +19,8 @@ Fragalysis can be used to explore data in a number of ways:
 **Experimental Structures (LHS)**
 
 * [Browsing experimental data](#browsing-experimental-data)
-* [Curating experimental data](#curating-experimental-data)
 * [Downloading experimental data](#downloading-experimental-data)
+* [Curating experimental data](#curating-experimental-data)
 * [Uploading assay measurements or computed scores](#uploading-assays)
 
 **Computed Structures (RHS)**
@@ -229,7 +229,7 @@ https://fragalysis.diamond.ac.uk/viewer/react/preview/direct/
 ---
 
 (downloading-experimental-data)=
-## Downloading experimental data
+## Downloading experimental data (LHS)
 
 You can download experimental structures directly from the Fraglaysis UI. At the top of the Fragalysis viewer interface, you will see a download button:
 
