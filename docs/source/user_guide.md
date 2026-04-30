@@ -238,7 +238,7 @@ You can download experimental structures directly from the Fraglaysis UI. At the
 :alt: Download button
 ```
 
-This will open the download interface. By default the download will select "All structures", but there are various selections that allow you to customise your download:
+This will open the download interface. By default, the download will select "All structures", "Incremental", "single SDF of all ligands" and "Computed copound sets" but there are various selections that allow you to customise your download:
 
 ```{image} _static/media/download_interface.png
 :width: 1000px
@@ -270,23 +270,68 @@ This will open the download interface. By default the download will select "All 
 | **Preserved (snapshot)**                       | Fixed dataset frozen at the current state; reproducible and unchanging                            |
 |  |  |
 | ***Other***                                    |                                                                                                  |
-| **Single SDF of all ligands**                  | One file containing all ligand structures (useful for cheminformatics workflows)                 |
-| **Computed compound sets**                     | Includes processed/annotated ligand sets (e.g., clustering, scoring, or filtering outputs)       |
+| **Single SDF of all ligands**                  | One file containing all ligand structures                 |
+| **Computed compound sets**                     | Includes computed ligand sets       |
 | **SoakDB CSV and SQLite files**                | Metadata database containing experiment details, useful for large-scale analysis                 |
 
-After selecting files, select "Prepare download" to zip your files. Once this is complete (be patient, this can take a few minutes) the "Download" and "Copy permalink" buttons will no longer be greyed out, allowing you to commence the download. These download options, as well as the others available are explained here:
+After selecting what files you want, select "Prepare download" to zip your files. Once this is complete (be patient, this can take a few minutes) the "Download" and "Copy permalink" buttons will no longer be greyed out, and a green "Download is ready!" indicator will appear, allowing you to commence the download. These download options, as well as the others available are explained here:
 
 | Option                                      | What it does                                                                       | When to use it                                                               |
 | ------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | **Prepare download**                        | Packages your selected files into a `.zip` downloadable bundle                     | Always use this option if downloading a `.zip` from the download interface.  |
 | **Copy permalink** (prepare download first) | Copies a persistent URL that encodes all your current selections                   | Sharing datasets or saving your exact selection for later |
-| **Download** (prepare download first)       | Once prepared, this immediately downloads the dataset with your current selections | Use when you’re ready to grab the data locally                               |
+| **Download** (prepare download first)       | Once prepared, this immediately downloads the dataset with your current selections | Use when you’re ready to download the data locally                               |
 | **(For coders) Copy JSON for API call**     | Copies a structured JSON representation of your selection for programmatic access  | Scripting workflows, automation, or pipeline integration                     |
 | **Show Examples**                           | Opens example usage GitHub page                                                    | If you need useful example / template code.                                  |
 
 ### Interpreting the download
 
+A Fragalysis download will contain a minimum of 2 directories, `aligned_files` and `crytallographic_files`. The download will typically include the additional directories `extra_files`, `scripts` and `yaml_files`, as well as some additional files at the top level directory.
 
+Two important top level files are `metadata.csv` and `smiles.smi`. These are both plain-text files. `metadata.csv` will contain information about the context of each ligand and may provide a convenient way to browse through smiles, site labels and PDB codes for each ligand. `smiles.smi` contains a list of all smiles strings that you have downloaded separated by commans.
+
+`[TARGETNAME]_combined.sdf` may also be present which will contain all the ligand sdf files in a single sdf file.
+
+### Aligned directory
+
+The aligned directory contains a subdirectory for each dataset that was selected for downloading, aligned to a common reference through [XChem Align](https://xchem-align.readthedocs.io) processing as they appear in the viewer interface. Depending on your selection of options when downloading the data, the follow file suffixes may be present:
+
+==IMPORTANT==
+`.ccp4` maps are optimised to work with NGL viewer. If viewing in PyMOL or COOT, files that align with the XCA aligned model have the suffix `crystallographic.ccp4`
+
+
+| File pattern                     | Description                                                                                                                             |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `[crystal-name].pdb` | Full model. Protein, ligand, and solvent molecules                                                                          |
+| `[crystal-name]_delig-desolv.pdb`             | Protein model only. Ligand and solvent molecules removed                                                                        |
+| `[crystal-name]_delig-solv.pdb`               | Solvent molecules only. Protein and ligand molecules removed                                                              |
+| `[crystal-name]_delig.pdb`                    | Protein and solvent. Ligand molecules removed                                                                      |
+| `[crystal-name]_event.ccp4`  | PanDDA event electron density map cut to around 12 Angstrom around the ligand; background-corrected reflection data higher signal-to-noise enhances ligand evidence corresponding to the PDB file   |
+| `[crystal-name]_sigmaa.ccp4` | 2mFo-DFc σA-weighted map cut to around 12 Angstrom around the ligand; estimate of the true electron density from diffraction data and atomic model           |
+| `[crystal-name]_diff.ccp4`   | mFo-DFc σA-weighted difference map cut to around 12 Angstrom around the ligand; Negative density indicates model without supporting density, positive density indicates unmodelled features |
+| `[crystal-name]_event_crystallographic.ccp4`  | PanDDA event electron density map cut to around 12 Angstrom around the ligand; background-corrected reflection data higher signal-to-noise enhances ligand evidence corresponding to the PDB file   |
+| `[crystal-name]_sigmaa_crystallographic.ccp4` | 2mFo-DFc σA-weighted map cut to around 12 Angstrom around the ligand; estimate of the true electron density from diffraction data and atomic model           |
+| `[crystal-name]_diff_crystallographic.ccp4`   | mFo-DFc σA-weighted difference map cut to around 12 Angstrom around the ligand; Negative density indicates model without supporting density, positive density indicates unmodelled features |
+| `[crystal-name]_ligand.pdb`       | Ligand structure in PDB format                                                                                                      |
+| `[crystal-name]_ligand.sdf`       | Ligand structure in SDF format                                                                                                      |
+| `[crystal-name]_ligand.smi`       | Ligand structure in SMILES format                                                                                                |
+
+
+### Crystallographic directory
+
+The `crystallographic_files` directory contains versions of data found in the aligned folder prior to [XChem Align](https://xchem-align.readthedocs.io) processing. Depending on your selection of options when downloading the data the follow file suffixes may be present:
+
+| File pattern                | Description                                                                                                                                  |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `[crystal_name].pdb`        | Atomic model of the crystal structure                                                                                                        |
+| `[crystal_name].mtz`        | Reflection data corresponding to the PDB file                                                                                                |
+| `[crystal_name].cif`        | Ligand structure in CIF format                                                                                               |
+
+
+### extra_files
+
+If this is present the files in this folder will have been added by the uploader of the data and has no defined structure. As a result we cannot guess what the contents of the file may be but we hope that the uploader of the extra files will have provided a similar
+Files in this folder will be added by the uploader and are largely freeform. Hopefully there will be a readme inside to describe each of the added files.
 
 ---
 
