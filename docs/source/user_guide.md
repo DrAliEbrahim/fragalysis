@@ -339,7 +339,7 @@ Creoptix software or [SensoFit](https://github.com/xchem/sensofit) (more details
 #### SensoFit package data
 
 `sensofit_package_data.zip` is the compressed "package" of the 4 Creoptix experiments exported into a more accessible format using
-SensoFit `export function` (please refer to the [GitHub repo](https://github.com/xchem/sensofit)). For the first OpenBind data release, this is the input used in an additional file `sensofit_walkthough_data_release_v1.ipynb`. This is a Jupyter Notebook that walks you through the first OpenBind data release affinity data using our open-source Python tool [SensoFit](https://github.com/xchem/sensofit).
+SensoFit `export function` (please refer to the [GitHub repo](https://github.com/xchem/sensofit)). For the first OpenBind data release, this is the input used in an additional file `sensofit_walkthough.ipynb`. This is a Jupyter Notebook that walks you through the first OpenBind data release affinity data using our open-source Python tool [SensoFit](https://github.com/xchem/sensofit).
 
 To use this notebook, please follow the steps below:
 Clone the [GitHub repo](https://github.com/xchem/sensofit), and cd to the root:
@@ -359,7 +359,7 @@ cd to the root of the affinity directory of the download and run the Jupyter Not
 cd /path/to/data-release/download/extra_files/affinity_files/
 jupyter lab
 ```
-An internet page should open with the default JupyterLab home page. `sensofit_walkthough_data_release_v1.ipynb` should be available in
+An internet page should open with the default JupyterLab home page. `sensofit_walkthough.ipynb` should be available in
 file browser on the left. Double click on the file and the notebook should open. You can run all the cell, or follow the instructions in the notebook cell by cell.
 
 ---
