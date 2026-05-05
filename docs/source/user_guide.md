@@ -286,18 +286,18 @@ After selecting what files you want, select "Prepare download" to zip your files
 
 ### Affinity Data
 
-If a data release contains accompanying affinity data, as part of the download affinity data will be contained in an `extra_files` subdirectory `affinity_files` and typically arranged as follows:
+If a data release contains accompanying affinity data, as part of the download affinity data will be contained in an `extra_files` archive `affinity_files.zip` and typically arranged as follows:
 
-`all_affinity_data.csv`\
-`all_affinity_data.sdf`\
-`creoptix_raw_data.zip`\
-`sensofit_package_data.zip`\
-`sensofit_walkthough.ipynb`\
-`README.pdf`
+>`all_affinity_data.csv`\
+>`all_affinity_data.sdf`\
+>`creoptix_raw_data.zip`\
+>`sensofit_package_data.zip`\
+>`sensofit_walkthough.ipynb`\
+>`README.pdf`
 
-#### `all_affinity_data.csv`
+#### All affinity data
 
-This file gathers all the values from manual kinetics evaluations using Creoptix software. Below is a decription
+The `all_affinity_data.csv` file gathers all the values from manual kinetics evaluations using Creoptix software. Below is a decription
 of all the fields in the CSV:
 * “Run date”: date when the experiment was performed
 * “Cycle number”: ID of the cycle (defined by Creoptix during the experiment)
@@ -328,26 +328,18 @@ and therefore was use in the ML analysis (True), or failed (False):
 
 Compounds that passed all criteria but had no associated structures were not used in analysis and were flagged "False".
 
-#### `all_affinity_data.sdf`
-
-This file is an SDF version of the CSV file generated using the `RDKit.Chem.SDWriter` function. It contains the exact
+The `all_affinity_data.sdf` file is an SDF version of the CSV file generated using the `RDKit.Chem.SDWriter` function. It contains the exact
 same information as the CSV file.
 
-#### `creoptix_raw_data.zip`
+#### Creoptix raw data
 
-This archive contains all 4 Creoptix experiments used to generate the data. They can be read using
+The `creoptix_raw_data.zip` archive contains all 4 Creoptix experiments used to generate the data. They can be read using
 Creoptix software or [SensoFit](https://github.com/xchem/sensofit) (more details about SensoFit below).
 
-#### `sensofit_package_data.zip`
+#### SensoFit package data
 
-This is the compressed "package" of the 4 Creoptix experiments exported into a more accessible format using
-SensoFit `export function` (please refer to the [GitHub repo](https://github.com/xchem/sensofit)). 
-
-For the first OpenBind data release, this is the input used in an additional file `sensofit_walkthough_data_release_v1.ipynb`.
-
-#### `sensofit_walkthough_data_release_v1.ipynb`
-
-This is a Jupyter Notebook that walks you through the first OpenBind data release affinity data using our open-source Python tool [SensoFit](https://github.com/xchem/sensofit).
+`sensofit_package_data.zip` is the compressed "package" of the 4 Creoptix experiments exported into a more accessible format using
+SensoFit `export function` (please refer to the [GitHub repo](https://github.com/xchem/sensofit)). For the first OpenBind data release, this is the input used in an additional file `sensofit_walkthough_data_release_v1.ipynb`. This is a Jupyter Notebook that walks you through the first OpenBind data release affinity data using our open-source Python tool [SensoFit](https://github.com/xchem/sensofit).
 
 To use this notebook, please follow the steps below:
 Clone the [GitHub repo](https://github.com/xchem/sensofit), and cd to the root:
