@@ -6,7 +6,7 @@
 
 Fragalysis is a web-based platform for the visualisation, comparison, and analysis of fragment-bound protein crystal structures, assay measurements, and follow-up virtual ligand screens. It can effectively be divided into:
 
-**Experimental** fragment screening data processed via [XChemAlign](https://xchem-align.readthedocs.io) and uploaded to Fragalysis, and affinity data collected using the Creoptix WAVEsystem and fit using [SensoFit](https://github.com/xchem/sensofit). These data can be curated and downloaded via the **"left-hand side" (LHS)** of Fragalysis.
+**Experimental** fragment screening data processed via [XChemAlign](https://xchem-align.readthedocs.io) and uploaded to Fragalysis, and affinity data collected using the Creoptix WAVEsystem and fit using either the vendor's software or [SensoFit](https://github.com/xchem/sensofit). These data can be curated and downloaded via the **"left-hand side" (LHS)** of Fragalysis.
 
 **Computed** follow-up designs from virtual compound sets uploaded to Fragalysis, curated and downloaded via the **"right-hand side" (RHS)** of Fragalysis.
 
